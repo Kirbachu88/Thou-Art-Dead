@@ -27,6 +27,6 @@ class Menu extends Phaser.Scene {
     }
 
     update() {
-        this.scoreText.text = String(Phaser.Math.Clamp(score, 0, 99999)).padStart(5, '0')
+        this.scoreText.text = String(score = Phaser.Math.Clamp(score, 0, 99999)).padStart(5, '0')
     }
 }
