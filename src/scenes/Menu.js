@@ -8,6 +8,14 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
+        // add new Player to scene (scene, x, y, key, frame, direction)
+        this.player = new Player(this, 200, 150, 'player', 0, 'down')
+
+        // setup keyboard input
+        this.keys = this.input.keyboard.createCursorKeys()
+        this.keys.HKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H)
+        this.keys.FKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
+
         let playerTextConfig = {
             fontFamily: 'Thou Art Dead',
             fontSize: '26px',
@@ -28,5 +36,8 @@ class Menu extends Phaser.Scene {
 
     update() {
         this.scoreText.text = String(score = Phaser.Math.Clamp(score, 0, 99999)).padStart(5, '0')
+
+        // make sure we step (ie update) the hero's state machine
+        this.playerFSM.step()
     }
 }

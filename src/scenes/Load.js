@@ -6,10 +6,13 @@ class Load extends Phaser.Scene {
     preload() {
         // Load Assets
 
+        // Load Aseprite Sheets
+        this.load.aseprite('player', './assets/sprites/Player.png', './assets/sprites/Player.json');
     }
 
     create() {
-
+        // Create Animations
+        this.anims.createFromAseprite('player');
     }
 
     update() {
