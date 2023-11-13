@@ -10,7 +10,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Properties
         this.direction
-        this.playerVelocity     // in pixels
+        this.playerVelocity = 50 // in pixels
         this.hurtTimer = 250    // in ms
 
         // Add SFX
@@ -33,7 +33,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 class IdleState extends State {
     enter(scene, player) {
         player.setVelocity(0)
-        player.anims.play('walk')
+        // player.anims.play('walk')
         player.anims.stop()
     }
 
@@ -129,14 +129,14 @@ class MoveState extends State {
         // normalize movement vector, update player position, and play proper animation
         moveDirection.normalize()
         player.setVelocity(player.playerVelocity * moveDirection.x, player.playerVelocity * moveDirection.y)
-        player.anims.play(`walk-${player.direction}`, true)
+        // player.anims.play(`walk-${player.direction}`, true)
     }
 }
 
 class AttackState extends State {
     enter(scene, player) {
         player.setVelocity(0)
-        player.anims.play('attack')
+        // player.anims.play('attack')
         player.once('animationcomplete', () => {
             this.stateMachine.transition('idle')
         })
@@ -147,7 +147,7 @@ class DuckState extends State {
     // Quack quack
     enter(scene, player) {
         player.setVelocity(0)
-        player.anims.play('duck')
+        // player.anims.play('duck')
     }
 }
 
@@ -180,8 +180,8 @@ class LungeState extends State {
         player.body.setVelocity(0)
 
         // "Once" this animation is complete
-        player.anims.play('lunge').once('animationcomplete', () => {
-            this.stateMachine.transition('idle')
-        })
+        // player.anims.play('lunge').once('animationcomplete', () => {
+        //     this.stateMachine.transition('idle')
+        // })
     }
 }
