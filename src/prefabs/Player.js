@@ -33,7 +33,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 class IdleState extends State {
     enter(scene, player) {
         player.setVelocity(0)
-        // player.anims.play('walk')
+        player.anims.play('Idle')
         player.anims.stop()
     }
 
@@ -129,14 +129,14 @@ class MoveState extends State {
         // normalize movement vector, update player position, and play proper animation
         moveDirection.normalize()
         player.setVelocity(player.playerVelocity * moveDirection.x, player.playerVelocity * moveDirection.y)
-        // player.anims.play(`walk-${player.direction}`, true)
+        player.anims.play('Walk', true)
     }
 }
 
 class AttackState extends State {
     enter(scene, player) {
         player.setVelocity(0)
-        // player.anims.play('attack')
+        player.anims.play('Attack')
         player.once('animationcomplete', () => {
             this.stateMachine.transition('idle')
         })
@@ -146,15 +146,19 @@ class AttackState extends State {
 class DuckState extends State {
     // Quack quack
     enter(scene, player) {
+        const { left, right, up, down, space, shift } = scene.keys
         player.setVelocity(0)
-        // player.anims.play('duck')
+        player.anims.play('Duck')
+        if(!down.isDown()) {
+            this.stateMachine.transition('duck')
+        }
     }
 }
 
 class HurtState extends State {
     enter(scene, player) {
         player.setVelocity(0)
-        player.anims.play('hurt')
+        player.anims.play('Hurt')
         player.anims.stop()
         player.setTint(0xFF0000)     // turn red
         // create knockback by sending body in direction opposite source of damage
@@ -180,8 +184,8 @@ class LungeState extends State {
         player.body.setVelocity(0)
 
         // "Once" this animation is complete
-        // player.anims.play('lunge').once('animationcomplete', () => {
-        //     this.stateMachine.transition('idle')
-        // })
+        player.anims.play('Lunge').once('animationcomplete', () => {
+            this.stateMachine.transition('idle')
+        })
     }
 }
