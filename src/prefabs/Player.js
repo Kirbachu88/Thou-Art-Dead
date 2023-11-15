@@ -12,6 +12,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.direction
         this.playerVelocity = 50 // in pixels
         this.hurtTimer = 250    // in ms
+        this.canJump = false
 
         // Add SFX
 
@@ -33,7 +34,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 // player-specific state classes
 class IdleState extends State {
     enter(scene, player) {
-        player.setVelocity(0)
+        player.setVelocityX(0)
         player.anims.play('Idle')
         player.anims.stop()
     }
@@ -44,10 +45,10 @@ class IdleState extends State {
         const HKey = scene.keys.HKey
         const FKey = scene.keys.FKey
 
-        // transition to jump if pressing space
-        if(Phaser.Input.Keyboard.JustDown(space)) {
-            this.stateMachine.transition('jump')
-            return
+        if(player.body.onFloor) {
+            player.canJump = true
+        } else {
+            player.canJump = false
         }
 
         if(Phaser.Input.Keyboard.JustDown(FKey)) {
@@ -56,8 +57,14 @@ class IdleState extends State {
         }
 
         // transition to duck if pressing down
-        if(Phaser.Input.Keyboard.JustDown(down)) {
+        if(down.isDown) {
             this.stateMachine.transition('duck')
+            return
+        }
+
+        // transition to jump if pressing space
+        if(Phaser.Input.Keyboard.JustDown(space) && player.canJump) {
+            this.stateMachine.transition('jump')
             return
         }
 
@@ -87,10 +94,10 @@ class MoveState extends State {
         const HKey = scene.keys.HKey
         const FKey = scene.keys.FKey
 
-        // transition to jump if pressing space
-        if(Phaser.Input.Keyboard.JustDown(space)) {
-            this.stateMachine.transition('jump')
-            return
+        if(player.body.onFloor) {
+            player.canJump = true
+        } else {
+            player.canJump = false
         }
 
         if(Phaser.Input.Keyboard.JustDown(FKey)) {
@@ -101,6 +108,12 @@ class MoveState extends State {
         // transition to duck if pressing down
         if(Phaser.Input.Keyboard.JustDown(down)) {
             this.stateMachine.transition('duck')
+            return
+        }
+
+        // transition to jump if pressing space
+        if(Phaser.Input.Keyboard.JustDown(space) && player.canJump) {
+            this.stateMachine.transition('jump')
             return
         }
 
@@ -139,7 +152,7 @@ class MoveState extends State {
         }
         // normalize movement vector, update player position, and play proper animation
         moveDirection.normalize()
-        player.setVelocity(player.playerVelocity * moveDirection.x, player.playerVelocity * moveDirection.y)
+        player.setVelocityX(player.playerVelocity * moveDirection.x)
         player.anims.play('Walk', true)
     }
 }
@@ -178,13 +191,15 @@ class DuckState extends State {
 
 class JumpState extends State {
     enter(scene, player) {
-        player.setVelocity(0)
+        player.canJump = false
         player.anims.play('Jump')
         player.setVelocityY(-500)
     }
 
     execute(scene, player) {
-        this.stateMachine.transition('idle')
+        if(player.body.onFloor()) {
+            this.stateMachine.transition('idle')
+        }
     }
 }
 
