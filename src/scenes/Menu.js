@@ -16,6 +16,13 @@ class Menu extends Phaser.Scene {
         this.keys.HKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H)
         this.keys.FKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
 
+        platforms = this.physics.add.staticGroup();
+
+        // refreshBody() after setScale()
+        platforms.create(200, height - 20, 'ground').setScale(100, 0).refreshBody()
+
+        this.physics.add.collider(this.player, platforms);
+
         let playerTextConfig = {
             fontFamily: 'Thou Art Dead',
             fontSize: '26px',

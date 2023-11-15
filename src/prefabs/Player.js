@@ -63,7 +63,7 @@ class IdleState extends State {
         }
 
         // transition to jump if pressing space
-        if(Phaser.Input.Keyboard.JustDown(space) && player.canJump) {
+        if(Phaser.Input.Keyboard.JustDown(space) && player.body.touching.down) {
             this.stateMachine.transition('jump')
             return
         }
@@ -112,7 +112,7 @@ class MoveState extends State {
         }
 
         // transition to jump if pressing space
-        if(Phaser.Input.Keyboard.JustDown(space) && player.canJump) {
+        if(Phaser.Input.Keyboard.JustDown(space) && player.body.touching.down) {
             this.stateMachine.transition('jump')
             return
         }
