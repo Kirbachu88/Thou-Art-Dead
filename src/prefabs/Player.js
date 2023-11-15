@@ -22,6 +22,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             idle: new IdleState(),
             move: new MoveState(),
             duck: new DuckState(),
+            jump: new JumpState(),
             attack: new AttackState(),
             lunge: new LungeState(),
             hurt: new HurtState(),
@@ -43,8 +44,13 @@ class IdleState extends State {
         const HKey = scene.keys.HKey
         const FKey = scene.keys.FKey
 
-        // transition to attack if pressing space
+        // transition to jump if pressing space
         if(Phaser.Input.Keyboard.JustDown(space)) {
+            this.stateMachine.transition('jump')
+            return
+        }
+
+        if(Phaser.Input.Keyboard.JustDown(FKey)) {
             this.stateMachine.transition('attack')
             return
         }
@@ -81,8 +87,13 @@ class MoveState extends State {
         const HKey = scene.keys.HKey
         const FKey = scene.keys.FKey
 
-        // transition to attack if pressing space
+        // transition to jump if pressing space
         if(Phaser.Input.Keyboard.JustDown(space)) {
+            this.stateMachine.transition('jump')
+            return
+        }
+
+        if(Phaser.Input.Keyboard.JustDown(FKey)) {
             this.stateMachine.transition('attack')
             return
         }
@@ -151,9 +162,29 @@ class DuckState extends State {
     }
 
     execute(scene, player) {
+        if(Phaser.Input.Keyboard.JustDown(scene.keys.space)) {
+            this.stateMachine.transition('jump')
+        }
+
+        if(Phaser.Input.Keyboard.JustDown(scene.keys.FKey)) {
+            this.stateMachine.transition('lunge')
+        }
+
         if(!scene.keys.down.isDown) {
             this.stateMachine.transition('idle')
         }
+    }
+}
+
+class JumpState extends State {
+    enter(scene, player) {
+        player.setVelocity(0)
+        player.anims.play('Jump')
+        player.setVelocityY(-500)
+    }
+
+    execute(scene, player) {
+        this.stateMachine.transition('idle')
     }
 }
 
