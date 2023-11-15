@@ -146,11 +146,13 @@ class AttackState extends State {
 class DuckState extends State {
     // Quack quack
     enter(scene, player) {
-        const { left, right, up, down, space, shift } = scene.keys
         player.setVelocity(0)
         player.anims.play('Duck')
-        if(!down.isDown()) {
-            this.stateMachine.transition('duck')
+    }
+
+    execute(scene, player) {
+        if(!scene.keys.down.isDown) {
+            this.stateMachine.transition('idle')
         }
     }
 }
