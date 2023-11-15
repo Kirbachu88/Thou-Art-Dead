@@ -68,7 +68,7 @@ class IdleState extends State {
         }
 
         // transition to move if pressing a movement key
-        if(left.isDown || right.isDown || up.isDown || down.isDown ) {
+        if(left.isDown || right.isDown) {
             this.stateMachine.transition('move')
             return
         }
@@ -116,7 +116,7 @@ class MoveState extends State {
         }
 
         // transition to idle if not pressing movement keys
-        if(!(left.isDown || right.isDown || up.isDown || down.isDown)) {
+        if(!(left.isDown || right.isDown)) {
             this.stateMachine.transition('idle')
             return
         }
