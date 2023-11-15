@@ -9,8 +9,10 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.setGravityY(1500)
 
         // Properties
-        this.direction
+        this.direction = 'right'
         this.playerVelocity = 50 // in pixels
+        this.lungeForceX = 500
+        this.lungeForceY = 500
         this.hurtTimer = 250    // in ms
         this.canJump = false
 
@@ -230,6 +232,16 @@ class HurtState extends State {
 class LungeState extends State {
     enter(scene, player) {
         player.body.setVelocity(0)
+        player.body.setVelocityY(-player.lungeForceY)
+
+        switch(player.direction) {
+            case 'left':
+                player.body.setVelocityX(-player.lungeForceX)
+                break
+            case 'right':
+                player.body.setVelocityX(player.lungeForceX)
+                break
+        }
 
         // "Once" this animation is complete
         player.anims.play('Lunge').once('animationcomplete', () => {
