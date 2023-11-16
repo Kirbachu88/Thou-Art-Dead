@@ -59,7 +59,7 @@ class IdleState extends State {
         }
 
         // transition to duck if pressing down
-        if(down.isDown) {
+        if(down.isDown && player.body.touching.down) {
             this.stateMachine.transition('duck')
             return
         }
@@ -108,7 +108,7 @@ class MoveState extends State {
         }
 
         // transition to duck if pressing down
-        if(Phaser.Input.Keyboard.JustDown(down)) {
+        if(Phaser.Input.Keyboard.JustDown(down) && player.body.touching.down) {
             this.stateMachine.transition('duck')
             return
         }
