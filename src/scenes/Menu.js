@@ -9,7 +9,7 @@ class Menu extends Phaser.Scene {
 
     create() {
         // add new Player to scene (scene, x, y, key, frame, direction)
-        this.player = new Player(this, 200, 150, 'player', 0, 'down').setScale(3)
+        this.player = new Player(this, 200, 150, 'player', 0, 'down').setScale(4)
 
         // setup keyboard input
         this.keys = this.input.keyboard.createCursorKeys()
