@@ -5,6 +5,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this)    // Add to existing, displayList, updateList
         scene.physics.add.existing(this)
 
+        this.setOrigin(0, 0)
+        this.body.setSize(16, 28).setOffset(5, 14)
+
         this.body.setCollideWorldBounds(true)
         this.setGravityY(1500)
 
@@ -146,9 +149,11 @@ class MoveState extends State {
         //     player.direction = 'down'
         // }
         if(left.isDown) {
+            player.setFlipX(true)
             moveDirection.x = -1
             player.direction = 'left'
         } else if(right.isDown) {
+            player.setFlipX(false)
             moveDirection.x = 1
             player.direction = 'right'
         }

@@ -8,6 +8,7 @@
 /* - Phaser 3 Custom Fonts  - https://learn.yorkcs.com/2019/09/28/phaser-3-basics-custom-fonts/
 /* - Pad Zeroes             - https://stackoverflow.com/questions/10073699/pad-a-number-with-leading-zeros-in-javascript
 /* - Creating Platforms     - https://phaser.io/tutorials/making-your-first-phaser-3-game/part1
+/* - setFlipX()             - https://phaser.discourse.group/t/flipx-for-spritesheet-animation/12935/2
 /**********************************************************************************************/
 
 let config = {
