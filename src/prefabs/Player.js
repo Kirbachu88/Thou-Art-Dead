@@ -8,6 +8,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.setOrigin(0, 0)
         this.body.setSize(16, 28).setOffset(21, 14)
 
+        this.hitbox = scene.physics.add.image()
+        this.hitbox.body.setSize(100, 100)
+
         this.body.setCollideWorldBounds(true)
         this.setGravityY(1500)
 
@@ -172,6 +175,17 @@ class AttackState extends State {
             this.stateMachine.transition('idle')
         })
     }
+
+    execute(scene, player) {
+        if (player.direction == 'right') {
+            player.hitbox.body.position.x = player.body.position.x + 15
+            player.hitbox.body.position.y = player.body.position.y - 30
+        } else {
+            player.hitbox.body.position.x = player.body.position.x - 50
+            player.hitbox.body.position.y = player.body.position.y - 30
+        }
+
+    }
 }
 
 class DuckState extends State {
@@ -204,10 +218,10 @@ class JumpState extends State {
     }
 
     execute(scene, player) {
-        if(player.body.onFloor()) {
-            this.stateMachine.transition('idle')
-        }
-    }
+                    if(player.body.onFloor()) {
+                this.stateMachine.transition('idle')
+            }
+            }
 }
 
 class HurtState extends State {
@@ -252,5 +266,16 @@ class LungeState extends State {
         player.anims.play('Lunge').once('animationcomplete', () => {
             this.stateMachine.transition('idle')
         })
+    }
+
+    execute(scene, player) {
+        if (player.direction == 'right') {
+            player.hitbox.body.position.x = player.body.position.x + 15
+            player.hitbox.body.position.y = player.body.position.y - 30
+        } else {
+            player.hitbox.body.position.x = player.body.position.x - 50
+            player.hitbox.body.position.y = player.body.position.y - 30
+        }
+
     }
 }
