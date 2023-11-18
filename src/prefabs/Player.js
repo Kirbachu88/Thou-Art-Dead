@@ -16,9 +16,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Properties
         this.direction = 'right'
-        this.playerVelocity = 50 // in pixels
+        this.playerVelocity = 200 // in pixels
         this.lungeForceX = 500
-        this.lungeForceY = 500
+        this.lungeForceY = 300
         this.hurtTimer = 250    // in ms
         this.canJump = false
 
@@ -43,11 +43,17 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 class IdleState extends State {
     enter(scene, player) {
         player.setVelocityX(0)
-        player.anims.play('Idle')
+        if (player.body.velocity.y == 0) {
+            player.anims.play('Idle')
+        }
         player.anims.stop()
     }
 
     execute(scene, player) {
+        if (player.body.velocity.y == 0 && player.body.touching.down) {
+            player.anims.play('Idle')
+        }
+
         // use destructuring to make a local copy of the keyboard object
         const { left, right, up, down, space, shift } = scene.keys
         const HKey = scene.keys.HKey
@@ -163,7 +169,9 @@ class MoveState extends State {
         // normalize movement vector, update player position, and play proper animation
         moveDirection.normalize()
         player.setVelocityX(player.playerVelocity * moveDirection.x)
-        player.anims.play('Walk', true)
+        if (player.body.touching.down) {
+            player.anims.play('Walk', true)
+        }
     }
 }
 
@@ -218,10 +226,10 @@ class JumpState extends State {
     }
 
     execute(scene, player) {
-                    if(player.body.onFloor()) {
-                this.stateMachine.transition('idle')
-            }
-            }
+        if(player.body.touching.down) {
+            this.stateMachine.transition('idle')
+        }
+    }
 }
 
 class HurtState extends State {
