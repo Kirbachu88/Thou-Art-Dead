@@ -6,7 +6,7 @@ class Zombie extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this)
 
         this.setOrigin(0, 0)
-        this.body.setSize(32, 45).setOffset(14, 4)
+        this.body.setSize(32, 45).setOffset(14, 5)
 
         this.body.setCollideWorldBounds(true)
         this.setGravityY(1500)

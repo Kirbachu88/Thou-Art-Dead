@@ -6,7 +6,7 @@ class Golem extends Phaser.Physics.Arcade.Sprite {
         scene.physics.add.existing(this)
 
         this.setOrigin(0, 0)
-        this.body.setSize(20, 48).setOffset(16, 1)
+        this.body.setSize(20, 48).setOffset(16, 2)
 
         this.body.setCollideWorldBounds(true)
         this.setGravityY(1500)
