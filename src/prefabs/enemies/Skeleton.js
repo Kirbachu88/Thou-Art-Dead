@@ -18,5 +18,13 @@ class Skeleton extends Phaser.Physics.Arcade.Sprite {
         // Add SFX
 
         // Initial Frame
+        this.play({
+            key: 'SkeletonWalk',
+            repeat: -1
+        })
+    }
+
+    update() {
+        
     }
 }

@@ -18,5 +18,13 @@ class Zombie extends Phaser.Physics.Arcade.Sprite {
         // Add SFX
 
         // Initial Frame
+        this.play({
+            key: 'ZombieWalk',
+            repeat: -1
+        })
+    }
+
+    update() {
+        
     }
 }

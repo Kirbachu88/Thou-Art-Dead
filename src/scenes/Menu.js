@@ -18,6 +18,7 @@ class Menu extends Phaser.Scene {
 
         // add enemies to group
         this.enemies = this.add.group([this.zombie1, this.skeleton1, this.skeleton2])
+        this.enemies.runChildUpdate = true
 
         // setup keyboard input
         this.keys = this.input.keyboard.createCursorKeys()
