@@ -1,0 +1,68 @@
+{ "frames": {
+   "0": {
+    "frame": { "x": 1, "y": 1, "w": 49, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 47, "h": 51 },
+    "sourceSize": { "w": 47, "h": 51 },
+    "duration": 400
+   },
+   "1": {
+    "frame": { "x": 51, "y": 1, "w": 49, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 47, "h": 51 },
+    "sourceSize": { "w": 47, "h": 51 },
+    "duration": 400
+   },
+   "2": {
+    "frame": { "x": 101, "y": 1, "w": 49, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 47, "h": 51 },
+    "sourceSize": { "w": 47, "h": 51 },
+    "duration": 400
+   },
+   "3": {
+    "frame": { "x": 1, "y": 55, "w": 49, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 47, "h": 51 },
+    "sourceSize": { "w": 47, "h": 51 },
+    "duration": 400
+   },
+   "4": {
+    "frame": { "x": 51, "y": 55, "w": 49, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 47, "h": 51 },
+    "sourceSize": { "w": 47, "h": 51 },
+    "duration": 400
+   },
+   "5": {
+    "frame": { "x": 101, "y": 55, "w": 49, "h": 53 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 47, "h": 51 },
+    "sourceSize": { "w": 47, "h": 51 },
+    "duration": 400
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.40-x64",
+  "image": "Golem.png",
+  "format": "RGBA8888",
+  "size": { "w": 151, "h": 109 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "GolemWalk", "from": 0, "to": 2, "direction": "forward" },
+   { "name": "GolemDeath", "from": 3, "to": 5, "direction": "forward" }
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
