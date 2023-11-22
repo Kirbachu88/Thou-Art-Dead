@@ -11,8 +11,7 @@ class Menu extends Phaser.Scene {
         this.menu = this.add.sprite(0, 0, 'menu').setScale(4).setOrigin(0, 0).setFrame(1)
 
         this.clock = this.time.addEvent({
-            delay: 500,
-            loop: true,
+            delay: 500, // Replace with duration of title dialogue
             callback: this.laughEvent(),
             callbackScope: this
         })
@@ -35,7 +34,7 @@ class Menu extends Phaser.Scene {
         this.menu.play({
             key: 'Laugh',
             repeat: 3,
-            delay: 500
+            delay: 200
         }, false)
     }
 }
