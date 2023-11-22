@@ -12,12 +12,13 @@ class Menu extends Phaser.Scene {
         this.player = new Player(this, 200, 150, 'player', 0, 'down').setScale(4)
 
         // add new enemies
+        this.golem1 = new Golem(this, 500, 15, 'golem', 0, 'down').setScale(4)
         this.zombie1 = new Zombie(this, 300, 15, 'zombie', 0, 'down').setScale(4)
         this.skeleton1 = new Skeleton(this, 200, 150, 'skeleton', 0, 'down').setScale(4)
         this.skeleton2 = new Skeleton(this, 400, 150, 'skeleton', 0, 'down').setScale(4)
 
         // add enemies to group
-        this.enemies = this.add.group([this.zombie1, this.skeleton1, this.skeleton2])
+        this.enemies = this.add.group([this.golem1, this.zombie1, this.skeleton1, this.skeleton2])
         this.enemies.runChildUpdate = true
 
         // setup keyboard input
