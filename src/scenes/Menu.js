@@ -12,11 +12,12 @@ class Menu extends Phaser.Scene {
         this.player = new Player(this, 200, 150, 'player', 0, 'down').setScale(4)
 
         // add new enemies
-        this.zombie1 = new Enemy(this, 200, 15, 'zombie', 0, 'down').setScale(4)
-        this.skeleton1 = new Enemy(this, 200, 150, 'skeleton', 0, 'down').setScale(4)
+        this.zombie1 = new Zombie(this, 300, 15, 'zombie', 0, 'down').setScale(4)
+        this.skeleton1 = new Skeleton(this, 200, 150, 'skeleton', 0, 'down').setScale(4)
+        this.skeleton2 = new Skeleton(this, 400, 150, 'skeleton', 0, 'down').setScale(4)
 
         // add enemies to group
-        this.enemies = this.add.group([this.zombie1, this.skeleton1])
+        this.enemies = this.add.group([this.zombie1, this.skeleton1, this.skeleton2])
 
         // setup keyboard input
         this.keys = this.input.keyboard.createCursorKeys()
@@ -54,6 +55,5 @@ class Menu extends Phaser.Scene {
 
         // make sure we step (ie update) the hero's state machine
         this.playerFSM.step()
-        this.enemyFSM.step()
     }
 }
