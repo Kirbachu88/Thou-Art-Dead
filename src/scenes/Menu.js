@@ -10,15 +10,10 @@ class Menu extends Phaser.Scene {
     create() {
         this.menu = this.add.sprite(0, 0, 'menu').setScale(4).setOrigin(0, 0).setFrame(1)
 
-        this.clock = this.time.addEvent({
-            delay: 500, // Replace with duration of title dialogue
-            callback: this.laughEvent(),
-            callbackScope: this
-        })
+        this.timedEvent = this.time.addEvent({ delay: 2500, callback: this.laughEvent, callbackScope: this, loop: true });
 
         this.menu.on('animationcomplete', () => {
             this.menu.setFrame(1)
-            this.laughEvent()
         }, this)
 
         this.input.keyboard.on('keydown', () => {
@@ -34,7 +29,6 @@ class Menu extends Phaser.Scene {
         this.menu.play({
             key: 'Laugh',
             repeat: 3,
-            delay: 200
-        }, false)
+        })
     }
 }
