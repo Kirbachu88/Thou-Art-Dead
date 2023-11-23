@@ -19,6 +19,15 @@ class Menu extends Phaser.Scene {
         this.input.keyboard.on('keydown', () => {
             this.scene.start('playScene')
         }, this)
+
+        let playerTextConfig = {
+            fontFamily: 'Thou Art Dead',
+            fontSize: '26px',
+            color: '#670002',
+            align: 'right'
+        }
+
+        this.playerText = this.add.text(44, height - 55, 'PLAYER 1 - INSERT COIN', playerTextConfig)
     }
 
     update() {
