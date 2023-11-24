@@ -12,24 +12,35 @@ class Menu extends Phaser.Scene {
         this.sfxRobot = this.sound.add('robot') // "Thou Art Dead"
         this.sfxLaugh = this.sound.add('laugh')
 
-        this.sfxRobot.play()
+        this.sfxRobot.play({
+            volume: 2.0
+        })
 
         // Animation
         this.menu = this.add.sprite(0, 0, 'menu').setScale(4).setOrigin(0, 0).setFrame(1)
 
-        this.sfxRobot.on('complete', () => {
+        this.sfxRobot.once('complete', () => {
+            let bgm = this.sound.add('menuBGM', {
+                loop: true,
+                volume: 0.25
+            })
+            bgm.play()
             this.timedEvent = this.time.addEvent({ delay: 1900, callback: this.laughEvent, callbackScope: this, loop: true })
+
+            this.input.keyboard.once('keydown', () => {
+                this.timedEvent.paused = true
+                this.sound.stopAll()
+                this.sfxRobot.play({
+                    volume: 2.0
+                })
+                this.sfxRobot.on('complete', () => {
+                    this.scene.start('playScene')
+                })
+            }, this)
         })
         
-
         this.menu.on('animationcomplete', () => {
             this.menu.setFrame(1)
-        }, this)
-
-        // Keys
-        this.input.keyboard.on('keydown', () => {
-            this.sound.stopAll()
-            this.scene.start('playScene')
         }, this)
 
         // Text
