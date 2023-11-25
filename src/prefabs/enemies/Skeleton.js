@@ -19,7 +19,10 @@ class Skeleton extends Enemy {
 
     death() {
         if (this.isAlive) {
-            this.play('SkeletonDeath')
+            this.play({
+                key: 'SkeletonDeath',
+                frameRate: 10
+            })
             this.sfxDeath.play()
             score += 25
         }

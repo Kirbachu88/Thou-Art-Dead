@@ -19,7 +19,10 @@ class Zombie extends Enemy {
 
     death() {
         if (this.isAlive) {
-            this.play('ZombieDeath')
+            this.play({
+                key: 'ZombieDeath',
+                frameRate: 10
+            })
             this.sfxDeath.play()
             score += 25
         }

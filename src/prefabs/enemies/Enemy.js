@@ -16,7 +16,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.isAlive = true
 
         // Add SFX
-        this.sfxDeath = scene.sound.add('enemyHit')
+        this.sfxDeath = scene.sound.add('enemyHit', {volume: 0.7})
     }
 
     update() {
