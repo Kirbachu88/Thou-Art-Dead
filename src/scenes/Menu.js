@@ -29,8 +29,10 @@ class Menu extends Phaser.Scene {
 
             this.input.keyboard.once('keydown', () => {
                 this.timedEvent.paused = true
+                this.menu.stop()
                 this.sound.stopAll()
                 this.sfxRobot.play({
+                    // Game Start SFX
                     volume: 2.0
                 })
                 this.sfxRobot.on('complete', () => {
