@@ -12,7 +12,9 @@ class Zombie extends Enemy {
     }
 
     update() {
-        
+        if(!this.isAlive) {
+            this.setAlpha(this.alpha - 0.02)
+        }
     }
 
     death() {
