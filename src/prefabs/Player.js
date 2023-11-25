@@ -24,8 +24,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Add SFX
         this.sfxSwing = scene.sound.add('swing', {
+            // Attack
             volume: 0.5
-        })    // Attack
+        })
 
         // Initial Frame
 
@@ -274,6 +275,7 @@ class LungeState extends State {
                 break
         }
 
+        player.sfxSwing.play()
         // "Once" this animation is complete
         player.anims.play('Lunge').once('animationcomplete', () => {
             this.stateMachine.transition('idle')

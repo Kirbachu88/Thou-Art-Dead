@@ -11,6 +11,7 @@
 /* - setFlipX()                         - https://phaser.discourse.group/t/flipx-for-spritesheet-animation/12935/2
 /* - Prevent audio pause on focus loss  - https://phaser.discourse.group/t/prevent-audio-from-stopping-on-switching-tabs/186/2
 /* - Get current animation frame        - https://phaser.discourse.group/t/is-there-sprite-currentframe/7021
+/* - Check if array contains value      - https://stackoverflow.com/questions/18588865/how-to-find-if-x-equals-any-value-in-an-array-in-javascript
 /**********************************************************************************************/
 
 let config = {
