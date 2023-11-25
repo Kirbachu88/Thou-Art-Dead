@@ -34,6 +34,14 @@ create() {
     this.physics.add.collider(this.player, platforms)
     this.physics.add.collider(this.enemies, platforms)
 
+    // Sound
+    let bgm = this.sound.add('playBGM', {
+        loop: true,
+        volume: 0.25
+    })
+    bgm.play()
+
+    // Text
     let playerTextConfig = {
         fontFamily: 'Thou Art Dead',
         fontSize: '26px',
