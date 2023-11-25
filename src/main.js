@@ -10,6 +10,7 @@
 /* - Creating Platforms                 - https://phaser.io/tutorials/making-your-first-phaser-3-game/part1
 /* - setFlipX()                         - https://phaser.discourse.group/t/flipx-for-spritesheet-animation/12935/2
 /* - Prevent audio pause on focus loss  - https://phaser.discourse.group/t/prevent-audio-from-stopping-on-switching-tabs/186/2
+/* - Get current animation frame        - https://phaser.discourse.group/t/is-there-sprite-currentframe/7021
 /**********************************************************************************************/
 
 let config = {

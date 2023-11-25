@@ -23,6 +23,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.canJump = false
 
         // Add SFX
+        this.sfxSwing = scene.sound.add('swing', {
+            volume: 0.5
+        })    // Attack
 
         // Initial Frame
 
@@ -178,6 +181,7 @@ class MoveState extends State {
 class AttackState extends State {
     enter(scene, player) {
         player.setVelocity(0)
+        player.sfxSwing.play()
         player.anims.play('Attack')
         player.once('animationcomplete', () => {
             this.stateMachine.transition('idle')

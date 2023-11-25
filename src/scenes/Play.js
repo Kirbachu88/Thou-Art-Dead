@@ -31,8 +31,15 @@ create() {
     // refreshBody() after setScale()
     platforms.create(200, height - 20, 'ground').setScale(100, 0).refreshBody()
 
+    // Collisions
     this.physics.add.collider(this.player, platforms)
     this.physics.add.collider(this.enemies, platforms)
+
+    this.physics.add.collider(this.enemies, this.player.hitbox, () => {
+        if(this.player.frame.name == 7) {
+            console.log("HIT")
+        }
+    })
 
     // Sound
     let bgm = this.sound.add('playBGM', {

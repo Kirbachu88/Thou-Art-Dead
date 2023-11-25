@@ -15,6 +15,8 @@ class Load extends Phaser.Scene {
         this.load.aseprite('skeleton', './assets/sprites/Skeleton.png', './assets/sprites/Skeleton.json')
 
         // Load SFX
+        this.load.audio('enemyHit', 'assets/sounds/547042__eponn__hit-impact-sword-3.wav')
+        this.load.audio('swing', 'assets/sounds/568169__merrick079__sword-sound-2.wav')
         this.load.audio('robot', './assets/sounds/Robot.wav')
         this.load.audio('laugh', './assets/sounds/Laugh.wav')
         this.load.audio('player_death', './assets/sounds/Player Death.wav')

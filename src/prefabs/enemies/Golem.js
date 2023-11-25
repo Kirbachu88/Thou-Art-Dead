@@ -16,6 +16,7 @@ class Golem extends Phaser.Physics.Arcade.Sprite {
         this.velocity = 200 // in pixels
 
         // Add SFX
+        this.sfxDeath = scene.sound.add('enemyHit')
 
         // Initial Frame
         this.play({
