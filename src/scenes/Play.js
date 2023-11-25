@@ -35,8 +35,9 @@ create() {
     this.physics.add.collider(this.player, platforms)
     this.physics.add.collider(this.enemies, platforms)
 
-    this.physics.add.collider(this.enemies, this.player.hitbox, () => {
+    this.physics.add.collider(this.enemies, this.player.hitbox, (enemy) => {
         if(this.player.frame.name == 7) {
+            enemy.death()
             console.log("HIT")
         }
     })

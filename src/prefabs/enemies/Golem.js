@@ -14,6 +14,7 @@ class Golem extends Phaser.Physics.Arcade.Sprite {
         // Properties
         this.direction = 'right'
         this.velocity = 200 // in pixels
+        this.isAlive = true
 
         // Add SFX
         this.sfxDeath = scene.sound.add('enemyHit')
@@ -27,5 +28,14 @@ class Golem extends Phaser.Physics.Arcade.Sprite {
 
     update() {
         
+    }
+
+    death() {
+        if (this.isAlive) {
+            this.play('GolemDeath')
+            this.sfxDeath.play()
+            score += 25
+        }
+        this.isAlive = false
     }
 }
