@@ -39,6 +39,7 @@ create() {
         if(['7', '12'].includes(this.player.frame.name)) {
             enemy.death()
             console.log("HIT")
+            this.player.setVelocityX(0)
         }
     })
 
