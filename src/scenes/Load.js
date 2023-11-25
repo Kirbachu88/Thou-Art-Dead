@@ -23,7 +23,7 @@ class Load extends Phaser.Scene {
 
         // Load Music
         this.load.audio('menuBGM', './assets/music/HoliznaCC0 - Gamer 6969.mp3')
-        this.load.audio('playBGM1', './assets/music/HoliznaCC0 - Dear Mr Super Computer.mp3')
+        this.load.audio('playBGM', './assets/music/HoliznaCC0 - Dear Mr Super Computer.mp3')
     }
 
     create() {
