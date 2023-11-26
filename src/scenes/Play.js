@@ -21,6 +21,15 @@ create() {
     this.enemies = this.add.group([this.golem1, this.zombie1, this.skeleton1, this.skeleton2])
     this.enemies.runChildUpdate = true
 
+    // Tilemap Info
+    const map = this.add.tilemap('tilemapJSON')
+    const tileset = map.addTilesetImage('Tileset', 'tilesetImage')
+
+    const bgLayer = map.createLayer('Decorative', tileset, 0, 0).setScale(4)
+    const mossLayer = map.createLayer('Moss', tileset, 0, 0).setScale(4)
+    const platformLayer = map.createLayer('Platforms', tileset, 0, 0).setScale(4)
+    const stairsLayer = map.createLayer('Stairs', tileset, 0, 0).setScale(4)
+
     // setup keyboard input
     this.keys = this.input.keyboard.createCursorKeys()
     this.keys.HKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H)
