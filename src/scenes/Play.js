@@ -16,6 +16,9 @@ create() {
     const mossLayer = map.createLayer('Moss', tileset, 0, -20).setScale(4)
     const platformLayer = map.createLayer('Platforms', tileset, 0, -20).setScale(4)
     const stairsLayer = map.createLayer('Stairs', tileset, 0, -20).setScale(4)
+
+    // Objects
+    const platformObjects = map.getObjectLayer('PlatformObjects')
     const stairsObjects = map.getObjectLayer('StairObjects')
 
     // add new enemies
@@ -43,6 +46,20 @@ create() {
 
     this.physics.world.setBounds(0, 0, map.widthInPixels * 4, height)
 
+    // Platform
+    this.platformGroup = this.add.group()
+
+    platformObjects.objects.forEach( (item) => {
+        let platform = new Platform(this, item.x * 4 + 16, item.y * 4, null, null, item.width * 4, item.height * 4)
+        this.platformGroup.add(platform)
+        console.log(item)
+    })
+
+    this.physics.add.collider(this.enemies, this.platformGroup)
+    this.physics.add.collider(this.player, this.platformGroup, () => {
+        console.log("Platform!")
+    })
+
     // Stairs
     this.stairsGroup = this.add.group()
 
@@ -52,16 +69,12 @@ create() {
         console.log(item)
     })
 
-    this.physics.add.collider(this.player, this.stairsGroup)
+    this.physics.add.collider(this.player, this.stairsGroup, () => {
+        console.log("Stairs!")
+    })
     console.log(this.stairsGroup)
 
-    // Collisions
-    platformLayer.setCollisionByProperty({
-        collides: true
-    })
-
-    this.physics.add.collider(this.player, platformLayer)
-    this.physics.add.collider(this.enemies, platformLayer)
+    map.createFromTiles([], null, null, this, this.cameras.main, 'Platforms')
 
     this.physics.add.collider(this.enemies, this.player.hitbox, (enemy) => {
         if(['7', '12'].includes(this.player.frame.name) && enemy.isAlive) {
