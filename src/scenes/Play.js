@@ -12,10 +12,10 @@ create() {
     const map = this.add.tilemap('tilemapJSON')
     const tileset = map.addTilesetImage('Tileset', 'tilesetImage')
 
-    const bgLayer = map.createLayer('Decorative', tileset, 0, -34).setScale(4)
-    const mossLayer = map.createLayer('Moss', tileset, 0, -34).setScale(4)
-    const platformLayer = map.createLayer('Platforms', tileset, 0, -34).setScale(4)
-    const stairsLayer = map.createLayer('Stairs', tileset, 0, -34).setScale(4)
+    const bgLayer = map.createLayer('Decorative', tileset, 0, -20).setScale(4)
+    const mossLayer = map.createLayer('Moss', tileset, 0, -20).setScale(4)
+    const platformLayer = map.createLayer('Platforms', tileset, 0, -20).setScale(4)
+    const stairsLayer = map.createLayer('Stairs', tileset, 0, -20).setScale(4)
 
     // add new enemies
     this.golem1 = new Golem(this, 500, 15, 'golem', 0, 'down').setScale(4)
@@ -80,7 +80,7 @@ create() {
         align: 'right'
     }
 
-    this.playerText = this.add.text(44, height - 55, 'PLAYER 1', playerTextConfig).setScrollFactor(0)
+    this.playerText = this.add.text(44, height - 40, 'PLAYER 1', playerTextConfig).setScrollFactor(0)
     this.scoreText = this.add.text(width - 210, 20, '', scoreTextConfig).setScrollFactor(0)
 }
 

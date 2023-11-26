@@ -54,7 +54,7 @@ class Menu extends Phaser.Scene {
             align: 'right'
         }
 
-        this.playerText = this.add.text(44, height - 55, 'PLAYER 1 - INSERT COIN', playerTextConfig)
+        this.playerText = this.add.text(44, height - 40, 'PLAYER 1 - INSERT COIN', playerTextConfig)
     }
 
     update() {
