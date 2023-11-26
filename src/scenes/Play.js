@@ -20,19 +20,36 @@ create() {
     // Objects
     const platformObjects = map.getObjectLayer('PlatformObjects')
     const stairsObjects = map.getObjectLayer('StairObjects')
+    const enemyObjects = map.getObjectLayer('SpawnEnemies')
 
     // add new enemies
-    this.golem1 = new Golem(this, 500, 15, 'golem', 0, 'down').setScale(4)
-    this.zombie1 = new Zombie(this, 300, 15, 'zombie', 0, 'down').setScale(4)
-    this.skeleton1 = new Skeleton(this, 200, 150, 'skeleton', 0, 'down').setScale(4)
-    this.skeleton2 = new Skeleton(this, 400, 150, 'skeleton', 0, 'down').setScale(4)
+    // this.golem1 = new Golem(this, 500, 15, 'golem', 0, 'down').setScale(4)
+    // this.zombie1 = new Zombie(this, 300, 15, 'zombie', 0, 'down').setScale(4)
+    // this.skeleton1 = new Skeleton(this, 200, 150, 'skeleton', 0, 'down').setScale(4)
+    // this.skeleton2 = new Skeleton(this, 400, 150, 'skeleton', 0, 'down').setScale(4)
 
     // add enemies to group
-    this.enemies = this.add.group([this.golem1, this.zombie1, this.skeleton1, this.skeleton2])
+    this.enemies = this.add.group()
     this.enemies.runChildUpdate = true
 
+    enemyObjects.objects.forEach( (item) => {
+        let enemy
+        let enemyType = Phaser.Math.RND.integerInRange(0, 2)
+        let enemyX = item.x * 4 - 16
+        let enemyY = item.y * 3
+
+        if (enemyType == 0) {
+            enemy = new Golem(this, enemyX, enemyY, 'golem', 0).setScale(4)
+        } else if (enemyType == 1) {
+            enemy = new Zombie(this, enemyX, enemyY, 'zombie', 0).setScale(4)
+        } else {
+            enemy = new Skeleton(this, enemyX, enemyY, 'skeleton', 0).setScale(4)
+        }
+        this.enemies.add(enemy)
+    })
+
     // add Player to scene (scene, x, y, key, frame)
-    const playerSpawn = map.findObject('Spawns', obj => obj.name === 'SpawnPlayer')
+    const playerSpawn = map.findObject('SpawnPlayer', obj => obj.name === 'SpawnPlayer')
     this.player = new Player(this, playerSpawn.x * 4, playerSpawn.y * 4, 'player', 0, 'down').setScale(4)
 
     // setup keyboard input

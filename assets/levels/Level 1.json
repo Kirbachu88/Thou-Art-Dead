@@ -475,6 +475,7 @@
         {
          "draworder":"topdown",
          "id":8,
+         "locked":true,
          "name":"PlatformObjects",
          "objects":[
                 {
@@ -3127,7 +3128,8 @@
         {
          "draworder":"topdown",
          "id":6,
-         "name":"Spawns",
+         "locked":true,
+         "name":"SpawnPlayer",
          "objects":[
                 {
                  "height":0,
@@ -3146,9 +3148,140 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":9,
+         "name":"SpawnEnemies",
+         "objects":[
+                {
+                 "height":0,
+                 "id":268,
+                 "name":"SpawnEnemy",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2640,
+                 "y":16
+                }, 
+                {
+                 "height":0,
+                 "id":269,
+                 "name":"SpawnEnemy",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2640,
+                 "y":16
+                }, 
+                {
+                 "height":0,
+                 "id":273,
+                 "name":"SpawnEnemy",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2480,
+                 "y":16
+                }, 
+                {
+                 "height":0,
+                 "id":274,
+                 "name":"SpawnEnemy",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2336,
+                 "y":16
+                }, 
+                {
+                 "height":0,
+                 "id":275,
+                 "name":"SpawnEnemy",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2192,
+                 "y":16
+                }, 
+                {
+                 "height":0,
+                 "id":276,
+                 "name":"SpawnEnemy",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2128,
+                 "y":96
+                }, 
+                {
+                 "height":0,
+                 "id":277,
+                 "name":"SpawnEnemy",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":3168,
+                 "y":96
+                }, 
+                {
+                 "height":0,
+                 "id":278,
+                 "name":"SpawnEnemy",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":3104,
+                 "y":96
+                }, 
+                {
+                 "height":0,
+                 "id":271,
+                 "name":"SpawnEnemy",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2688,
+                 "y":96
+                }, 
+                {
+                 "height":0,
+                 "id":272,
+                 "name":"SpawnEnemy",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":2768,
+                 "y":96
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":9,
- "nextobjectid":268,
+ "nextlayerid":10,
+ "nextobjectid":279,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
