@@ -12,10 +12,10 @@ create() {
     const map = this.add.tilemap('tilemapJSON')
     const tileset = map.addTilesetImage('Tileset', 'tilesetImage')
 
-    const bgLayer = map.createLayer('Decorative', tileset, 0, 0).setScale(4)
-    const mossLayer = map.createLayer('Moss', tileset, 0, 0).setScale(4)
-    const platformLayer = map.createLayer('Platforms', tileset, 0, 0).setScale(4)
-    const stairsLayer = map.createLayer('Stairs', tileset, 0, 0).setScale(4)
+    const bgLayer = map.createLayer('Decorative', tileset, 0, -34).setScale(4)
+    const mossLayer = map.createLayer('Moss', tileset, 0, -34).setScale(4)
+    const platformLayer = map.createLayer('Platforms', tileset, 0, -34).setScale(4)
+    const stairsLayer = map.createLayer('Stairs', tileset, 0, -34).setScale(4)
 
     // add new enemies
     this.golem1 = new Golem(this, 500, 15, 'golem', 0, 'down').setScale(4)
