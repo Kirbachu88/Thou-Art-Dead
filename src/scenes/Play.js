@@ -35,6 +35,12 @@ create() {
     this.keys.HKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H)
     this.keys.FKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
 
+    // Camera
+    this.cameras.main.setBounds(0, 0, map.widthInPixels * 4, height)
+    this.cameras.main.startFollow(this.player, true, 1, 1)
+
+    this.physics.world.setBounds(0, 0, map.widthInPixels * 4, height)
+
     // Collisions
     platformLayer.setCollisionByProperty({
         collides: true
