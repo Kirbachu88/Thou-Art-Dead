@@ -54,7 +54,7 @@ class IdleState extends State {
     }
 
     execute(scene, player) {
-        if (player.body.velocity.y == 0 && player.body.touching.down) {
+        if (player.body.velocity.y == 0 && player.body.blocked.down) {
             player.anims.play('Idle')
         }
 
@@ -75,13 +75,13 @@ class IdleState extends State {
         }
 
         // transition to duck if pressing down
-        if(down.isDown && player.body.touching.down) {
+        if(down.isDown && player.body.blocked.down) {
             this.stateMachine.transition('duck')
             return
         }
 
         // transition to jump if pressing space
-        if(Phaser.Input.Keyboard.JustDown(space) && player.body.touching.down) {
+        if(Phaser.Input.Keyboard.JustDown(space) && player.body.blocked.down) {
             this.stateMachine.transition('jump')
             return
         }
@@ -124,13 +124,13 @@ class MoveState extends State {
         }
 
         // transition to duck if pressing down
-        if(Phaser.Input.Keyboard.JustDown(down) && player.body.touching.down) {
+        if(Phaser.Input.Keyboard.JustDown(down) && player.body.blocked.down) {
             this.stateMachine.transition('duck')
             return
         }
 
         // transition to jump if pressing space
-        if(Phaser.Input.Keyboard.JustDown(space) && player.body.touching.down) {
+        if(Phaser.Input.Keyboard.JustDown(space) && player.body.blocked.down) {
             this.stateMachine.transition('jump')
             return
         }
@@ -173,7 +173,7 @@ class MoveState extends State {
         // normalize movement vector, update player position, and play proper animation
         moveDirection.normalize()
         player.setVelocityX(player.playerVelocity * moveDirection.x)
-        if (player.body.touching.down) {
+        if (player.body.blocked.down) {
             player.anims.play('Walk', true)
         }
     }
@@ -231,7 +231,7 @@ class JumpState extends State {
     }
 
     execute(scene, player) {
-        if(player.body.touching.down) {
+        if(player.body.blocked.down) {
             this.stateMachine.transition('idle')
         }
     }
