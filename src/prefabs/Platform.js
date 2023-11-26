@@ -14,11 +14,9 @@ class Platform extends Phaser.Physics.Arcade.Sprite {
         this.body.checkCollision.right = false
 
         this.setAlpha(0)
-
-        console.log("hello??")
     }
 
     update() {
-        console.log("Hello?")
+
     }
 }

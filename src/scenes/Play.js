@@ -22,13 +22,7 @@ create() {
     const stairsObjects = map.getObjectLayer('StairObjects')
     const enemyObjects = map.getObjectLayer('SpawnEnemies')
 
-    // add new enemies
-    // this.golem1 = new Golem(this, 500, 15, 'golem', 0, 'down').setScale(4)
-    // this.zombie1 = new Zombie(this, 300, 15, 'zombie', 0, 'down').setScale(4)
-    // this.skeleton1 = new Skeleton(this, 200, 150, 'skeleton', 0, 'down').setScale(4)
-    // this.skeleton2 = new Skeleton(this, 400, 150, 'skeleton', 0, 'down').setScale(4)
-
-    // add enemies to group
+    // Enemies
     this.enemies = this.add.group()
     this.enemies.runChildUpdate = true
 
@@ -48,7 +42,7 @@ create() {
         this.enemies.add(enemy)
     })
 
-    // add Player to scene (scene, x, y, key, frame)
+    // Player
     const playerSpawn = map.findObject('SpawnPlayer', obj => obj.name === 'SpawnPlayer')
     this.player = new Player(this, playerSpawn.x * 4, playerSpawn.y * 4, 'player', 0, 'down').setScale(4)
 
@@ -65,38 +59,26 @@ create() {
 
     // Platform
     this.platformGroup = this.add.group()
-
     platformObjects.objects.forEach( (item) => {
         let platform = new Platform(this, item.x * 4 + 16, item.y * 4, null, null, item.width * 4, item.height * 4)
         this.platformGroup.add(platform)
-        console.log(item)
-    })
-
-    this.physics.add.collider(this.enemies, this.platformGroup)
-    this.physics.add.collider(this.player, this.platformGroup, () => {
-        console.log("Platform!")
     })
 
     // Stairs
     this.stairsGroup = this.add.group()
-
     stairsObjects.objects.forEach( (item) => {
         let stairs = new Stairs(this, item.x * 4, item.y * 4 - 20, null, null, item.width * 4, item.height * 4)
         this.stairsGroup.add(stairs)
-        console.log(item)
     })
 
-    this.physics.add.collider(this.player, this.stairsGroup, () => {
-        console.log("Stairs!")
-    })
-    console.log(this.stairsGroup)
-
-    map.createFromTiles([], null, null, this, this.cameras.main, 'Platforms')
+    // Collisions
+    this.physics.add.collider(this.enemies, this.platformGroup)
+    this.physics.add.collider(this.player, this.platformGroup)
+    this.physics.add.collider(this.player, this.stairsGroup)
 
     this.physics.add.collider(this.enemies, this.player.hitbox, (enemy) => {
         if(['7', '12'].includes(this.player.frame.name) && enemy.isAlive) {
             enemy.death()
-            console.log("HIT")
             this.player.setVelocityX(0)
         }
     })
