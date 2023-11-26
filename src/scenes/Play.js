@@ -35,14 +35,13 @@ create() {
     this.keys.HKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H)
     this.keys.FKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
 
-    platforms = this.physics.add.staticGroup();
-
-    // refreshBody() after setScale()
-    platforms.create(200, height - 20, 'ground').setScale(100, 0).refreshBody()
-
     // Collisions
-    this.physics.add.collider(this.player, platforms)
-    this.physics.add.collider(this.enemies, platforms)
+    platformLayer.setCollisionByProperty({
+        collides: true
+    })
+
+    this.physics.add.collider(this.player, platformLayer)
+    this.physics.add.collider(this.enemies, platformLayer)
 
     this.physics.add.collider(this.enemies, this.player.hitbox, (enemy) => {
         if(['7', '12'].includes(this.player.frame.name) && enemy.isAlive) {
@@ -83,5 +82,6 @@ update() {
 
     // make sure we step (ie update) the hero's state machine
     this.playerFSM.step()
+    console.log(this.player.body.blocked)
 }
 }
