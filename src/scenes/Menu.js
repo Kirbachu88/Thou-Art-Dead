@@ -31,6 +31,7 @@ class Menu extends Phaser.Scene {
                 this.timedEvent.paused = true
                 this.menu.stop()
                 this.sound.stopAll()
+                this.time.addEvent({ delay: 120, callback: this.flickerText, callbackScope: this, loop: true })
                 this.sfxRobot.play({
                     // Game Start SFX
                     volume: 2.0
@@ -67,5 +68,14 @@ class Menu extends Phaser.Scene {
             frameRate: 10,
             repeat: 3,
         })
+    }
+
+    flickerText() {
+        if (this.playerText.alpha == 1) {
+            this.playerText.setAlpha(0)
+        } else {
+            this.playerText.setAlpha(1)
+        }
+
     }
 }
