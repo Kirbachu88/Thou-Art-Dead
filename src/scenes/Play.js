@@ -16,6 +16,7 @@ create() {
     const mossLayer = map.createLayer('Moss', tileset, 0, -20).setScale(4)
     const platformLayer = map.createLayer('Platforms', tileset, 0, -20).setScale(4)
     const stairsLayer = map.createLayer('Stairs', tileset, 0, -20).setScale(4)
+    const stairsObjects = map.getObjectLayer('StairObjects')
 
     // add new enemies
     this.golem1 = new Golem(this, 500, 15, 'golem', 0, 'down').setScale(4)
@@ -41,6 +42,18 @@ create() {
     this.cameras.main.startFollow(this.player, false, 1, 1, -(width / 7))
 
     this.physics.world.setBounds(0, 0, map.widthInPixels * 4, height)
+
+    // Stairs
+    this.stairsGroup = this.add.group()
+
+    stairsObjects.objects.forEach( (item) => {
+        let stairs = new Stairs(this, item.x * 4, item.y * 4 - 20, null, null, item.width * 4, item.height * 4)
+        this.stairsGroup.add(stairs)
+        console.log(item)
+    })
+
+    this.physics.add.collider(this.player, this.stairsGroup)
+    console.log(this.stairsGroup)
 
     // Collisions
     platformLayer.setCollisionByProperty({

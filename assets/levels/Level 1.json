@@ -88,6 +88,187 @@
         }, 
         {
          "draworder":"topdown",
+         "id":7,
+         "name":"StairObjects",
+         "objects":[
+                {
+                 "height":8,
+                 "id":3,
+                 "name":"StairBox",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":2488,
+                 "y":128.03125
+                }, 
+                {
+                 "height":8,
+                 "id":4,
+                 "name":"StairBox",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":2480.03125,
+                 "y":136.03125
+                }, 
+                {
+                 "height":8,
+                 "id":5,
+                 "name":"StairBox",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":2503.97,
+                 "y":112
+                }, 
+                {
+                 "height":8,
+                 "id":6,
+                 "name":"StairBox",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":2496,
+                 "y":120
+                }, 
+                {
+                 "height":8,
+                 "id":7,
+                 "name":"StairBox",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":2519.97,
+                 "y":96
+                }, 
+                {
+                 "height":8,
+                 "id":8,
+                 "name":"StairBox",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":2512,
+                 "y":104
+                }, 
+                {
+                 "height":8,
+                 "id":9,
+                 "name":"StairBox",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":2535.97,
+                 "y":80
+                }, 
+                {
+                 "height":8,
+                 "id":10,
+                 "name":"StairBox",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":2528,
+                 "y":88
+                }, 
+                {
+                 "height":8,
+                 "id":13,
+                 "name":"StairBox",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":2544.04347826087,
+                 "y":72.0434782608696
+                }, 
+                {
+                 "height":8,
+                 "id":14,
+                 "name":"StairBox",
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":2552,
+                 "y":72.0434782608696
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
          "id":6,
          "name":"Spawns",
          "objects":[
@@ -100,7 +281,7 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":512,
+                 "x":2432,
                  "y":96
                 }],
          "opacity":1,
@@ -109,8 +290,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":7,
- "nextobjectid":3,
+ "nextlayerid":8,
+ "nextobjectid":15,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
