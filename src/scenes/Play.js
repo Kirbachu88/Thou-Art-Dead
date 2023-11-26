@@ -82,6 +82,5 @@ update() {
 
     // make sure we step (ie update) the hero's state machine
     this.playerFSM.step()
-    console.log(this.player.body.blocked)
 }
 }
