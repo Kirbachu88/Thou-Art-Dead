@@ -27,8 +27,9 @@ create() {
     this.enemies = this.add.group([this.golem1, this.zombie1, this.skeleton1, this.skeleton2])
     this.enemies.runChildUpdate = true
 
-    // add new Player to scene (scene, x, y, key, frame, direction)
-    this.player = new Player(this, 200, 150, 'player', 0, 'down').setScale(4)
+    // add Player to scene (scene, x, y, key, frame)
+    const playerSpawn = map.findObject('Spawns', obj => obj.name === 'SpawnPlayer')
+    this.player = new Player(this, playerSpawn.x * 4, playerSpawn.y * 4, 'player', 0, 'down').setScale(4)
 
     // setup keyboard input
     this.keys = this.input.keyboard.createCursorKeys()
