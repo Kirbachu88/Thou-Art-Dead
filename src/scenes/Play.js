@@ -76,6 +76,10 @@ create() {
     this.physics.add.collider(this.player, this.platformGroup)
     this.physics.add.collider(this.player, this.stairsGroup)
 
+    this.physics.add.overlap(this.player, this.stairsGroup, () => {
+        console.log("overlapping")
+    })
+
     this.physics.add.collider(this.enemies, this.player.hitbox, (enemy) => {
         if(['7', '12'].includes(this.player.frame.name) && enemy.isAlive) {
             enemy.death()

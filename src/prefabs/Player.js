@@ -11,6 +11,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.hitbox = scene.physics.add.image()
         this.hitbox.body.setSize(100, 100)
 
+        this.stairbox = scene.physics.add.image()
+        this.stairbox.body.setSize(64, 10)
+
         this.body.setCollideWorldBounds(true)
         this.setGravityY(1500)
 
@@ -21,6 +24,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.lungeForceY = 300
         this.hurtTimer = 250    // in ms
         this.canJump = false
+        this.isClimbing = false
 
         // Add SFX
         this.sfxSwing = scene.sound.add('swing', {
@@ -112,6 +116,9 @@ class MoveState extends State {
         const HKey = scene.keys.HKey
         const FKey = scene.keys.FKey
 
+        player.stairbox.body.position.x = player.body.position.x
+        player.stairbox.body.position.y = player.body.position.y + player.body.height - player.stairbox.body.height
+
         if(player.body.onFloor) {
             player.canJump = true
         } else {
@@ -154,9 +161,13 @@ class MoveState extends State {
 
         // handle movement
         let moveDirection = new Phaser.Math.Vector2(0, 0)
-        // if(up.isDown) {
-        //     moveDirection.y = -1
-        //     player.direction = 'up'
+        if(up.isDown) {
+            player.direction = 'up'
+            player.isClimbing = true
+            console.log(player.stairbox.body.blocked)
+        } else {
+            player.isClimbing = false
+        }
         // } else if(down.isDown) {
         //     moveDirection.y = 1
         //     player.direction = 'down'
@@ -231,6 +242,10 @@ class JumpState extends State {
     }
 
     execute(scene, player) {
+        player.stairbox.body.position.x = player.body.position.x
+        player.stairbox.body.position.y = player.body.position.y + player.body.height - player.stairbox.body.height
+
+
         if(player.body.blocked.down) {
             this.stateMachine.transition('idle')
         }
