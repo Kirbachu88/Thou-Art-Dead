@@ -10,10 +10,10 @@ class Load extends Phaser.Scene {
         // Load Aseprite Sheets
         this.load.aseprite('menu', './assets/screens/Main Menu.png', './assets/screens/Main Menu.json')
         this.load.aseprite('player', './assets/sprites/Player.png', './assets/sprites/Player.json')
-        this.load.aseprite('golem', './assets/sprites/Golem.png', './assets/sprites/Golem.json')
-        this.load.aseprite('zombie', './assets/sprites/Zombie.png', './assets/sprites/Zombie.json')
-        this.load.aseprite('skeleton', './assets/sprites/Skeleton.png', './assets/sprites/Skeleton.json')
-
+        this.load.aseprite('golem', './assets/sprites/enemies/Golem.png', './assets/sprites/enemies/Golem.json')
+        this.load.aseprite('zombie', './assets/sprites/enemies/Zombie.png', './assets/sprites/enemies/Zombie.json')
+        this.load.aseprite('skeleton', './assets/sprites/enemies/Skeleton.png', './assets/sprites/enemies/Skeleton.json')
+        
         // Load SFX
         this.load.audio('enemyHit', 'assets/sounds/547042__eponn__hit-impact-sword-3.wav')
         this.load.audio('swing', 'assets/sounds/568169__merrick079__sword-sound-2.wav')
