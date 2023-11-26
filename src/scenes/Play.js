@@ -36,7 +36,7 @@ create() {
     this.physics.add.collider(this.enemies, platforms)
 
     this.physics.add.collider(this.enemies, this.player.hitbox, (enemy) => {
-        if(['7', '12'].includes(this.player.frame.name)) {
+        if(['7', '12'].includes(this.player.frame.name) && enemy.isAlive) {
             enemy.death()
             console.log("HIT")
             this.player.setVelocityX(0)
