@@ -194,7 +194,7 @@ class AttackState extends State {
             player.hitbox.body.position.x = player.body.position.x + 15
             player.hitbox.body.position.y = player.body.position.y - 30
         } else {
-            player.hitbox.body.position.x = player.body.position.x - 50
+            player.hitbox.body.position.x = player.body.position.x - 68
             player.hitbox.body.position.y = player.body.position.y - 30
         }
 
@@ -287,7 +287,7 @@ class LungeState extends State {
             player.hitbox.body.position.x = player.body.position.x + 15
             player.hitbox.body.position.y = player.body.position.y - 30
         } else {
-            player.hitbox.body.position.x = player.body.position.x - 50
+            player.hitbox.body.position.x = player.body.position.x - 68
             player.hitbox.body.position.y = player.body.position.y - 30
         }
 
