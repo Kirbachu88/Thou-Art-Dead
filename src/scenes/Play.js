@@ -8,8 +8,14 @@ preload() {
 }
 
 create() {
-    // add new Player to scene (scene, x, y, key, frame, direction)
-    this.player = new Player(this, 200, 150, 'player', 0, 'down').setScale(4)
+    // Tilemap Info
+    const map = this.add.tilemap('tilemapJSON')
+    const tileset = map.addTilesetImage('Tileset', 'tilesetImage')
+
+    const bgLayer = map.createLayer('Decorative', tileset, 0, 0).setScale(4)
+    const mossLayer = map.createLayer('Moss', tileset, 0, 0).setScale(4)
+    const platformLayer = map.createLayer('Platforms', tileset, 0, 0).setScale(4)
+    const stairsLayer = map.createLayer('Stairs', tileset, 0, 0).setScale(4)
 
     // add new enemies
     this.golem1 = new Golem(this, 500, 15, 'golem', 0, 'down').setScale(4)
@@ -21,14 +27,8 @@ create() {
     this.enemies = this.add.group([this.golem1, this.zombie1, this.skeleton1, this.skeleton2])
     this.enemies.runChildUpdate = true
 
-    // Tilemap Info
-    const map = this.add.tilemap('tilemapJSON')
-    const tileset = map.addTilesetImage('Tileset', 'tilesetImage')
-
-    const bgLayer = map.createLayer('Decorative', tileset, 0, 0).setScale(4)
-    const mossLayer = map.createLayer('Moss', tileset, 0, 0).setScale(4)
-    const platformLayer = map.createLayer('Platforms', tileset, 0, 0).setScale(4)
-    const stairsLayer = map.createLayer('Stairs', tileset, 0, 0).setScale(4)
+    // add new Player to scene (scene, x, y, key, frame, direction)
+    this.player = new Player(this, 200, 150, 'player', 0, 'down').setScale(4)
 
     // setup keyboard input
     this.keys = this.input.keyboard.createCursorKeys()
@@ -37,7 +37,7 @@ create() {
 
     // Camera
     this.cameras.main.setBounds(0, 0, map.widthInPixels * 4, height)
-    this.cameras.main.startFollow(this.player, true, 1, 1)
+    this.cameras.main.startFollow(this.player, false, 1, 1, -(width / 7))
 
     this.physics.world.setBounds(0, 0, map.widthInPixels * 4, height)
 
