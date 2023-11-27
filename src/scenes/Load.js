@@ -55,12 +55,7 @@ class Load extends Phaser.Scene {
     }
 
     create() {
-        // Create Animations
-        this.anims.createFromAseprite('menu')
-        this.anims.createFromAseprite('player')
-        this.anims.createFromAseprite('golem')
-        this.anims.createFromAseprite('zombie')
-        this.anims.createFromAseprite('skeleton')
+
     }
 
     update() {
@@ -71,7 +66,7 @@ class Load extends Phaser.Scene {
         this.newGraphics.clear();
         this.newGraphics.fillStyle(0x500002, 1);
         this.newGraphics.fillRectShape(new Phaser.Geom.Rectangle(202, 113, percentage*395, 45));
-        
+        console.log(percentage)
         if (percentage == 1) {
             this.anyKeyText.setAlpha(1)
         }

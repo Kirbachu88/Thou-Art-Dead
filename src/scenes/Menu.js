@@ -17,6 +17,14 @@ class Menu extends Phaser.Scene {
         })
 
         // Animation
+        
+        // Create Animations
+        this.anims.createFromAseprite('menu')
+        this.anims.createFromAseprite('player')
+        this.anims.createFromAseprite('golem')
+        this.anims.createFromAseprite('zombie')
+        this.anims.createFromAseprite('skeleton')
+
         this.menu = this.add.sprite(0, 0, 'menu').setScale(4).setOrigin(0, 0).setFrame(1)
 
         this.sfxRobot.once('complete', () => {
