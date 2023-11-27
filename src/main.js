@@ -14,6 +14,7 @@
 /* - Check if array contains value      - https://stackoverflow.com/questions/18588865/how-to-find-if-x-equals-any-value-in-an-array-in-javascript
 /* - body.blocked for tilemap colliders - https://phaser.discourse.group/t/arcade-physics-body-touching-down-not-true-when-using-tilemaps-and-colliders/12022
 /* - Add favicon                        - https://www.w3schools.com/html/html_favicon.asp
+/* - Loading Screen                     - https://www.patchesoft.com/phaser-3-loading-screen
 /**********************************************************************************************/
 
 let config = {
