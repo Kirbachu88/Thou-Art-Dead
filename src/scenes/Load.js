@@ -20,12 +20,6 @@ class Load extends Phaser.Scene {
 		var lolText = this.add.text(190, 70,"THOU ART DEAD", { fontFamily: 'Thou Art Dead', fontSize: '26px', fill: '#670002' }).setAlpha(0)
         var anyKeyText = this.add.text(190, height - 40,"PRESS ANY KEY", { fontFamily: 'Thou Art Dead', fontSize: '26px', fill: '#670002' }).setAlpha(0)
 
-        // Slow down loading bar
-		this.load.image('background', 'images/tut/background.png')
-		for(var i = 0; i < 1000; i++) {
-			this.load.image('background_'+i, 'images/tut/background.png')
-		}
-
 		this.load.on('progress', this.updateBar, {newGraphics:this.newGraphics,loadingText:loadingText,lolText:lolText,anyKeyText:anyKeyText})
 
         this.input.keyboard.on('keydown', () => {
