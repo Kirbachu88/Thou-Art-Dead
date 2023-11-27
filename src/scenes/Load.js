@@ -78,6 +78,5 @@ class Load extends Phaser.Scene {
         this.lolText.setAlpha(percentage)
         percentage = percentage * 100;
         this.loadingText.setText("INITIAL TESTS INDICATE");
-        console.log("P:" + percentage);
         }
 }
