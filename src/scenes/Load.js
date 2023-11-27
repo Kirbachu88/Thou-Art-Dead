@@ -4,6 +4,35 @@ class Load extends Phaser.Scene {
     }
     
     preload() {
+        // Loading Bar
+		this.graphics = this.add.graphics()
+		this.newGraphics = this.add.graphics()
+		var progressBar = new Phaser.Geom.Rectangle(200, 110, 400, 50)
+		var progressBarFill = new Phaser.Geom.Rectangle(202, 113, 300, 45)
+
+        this.graphics.lineStyle(5, 0x670002, 1)
+        this.graphics.strokeRect(200, 110, 400, 50)
+
+		this.newGraphics.fillStyle(0x500002, 1)
+		this.newGraphics.fillRectShape(progressBarFill)
+
+		var loadingText = this.add.text(44 , 30,"LOADING", { fontFamily: 'Thou Art Dead', fontSize: '26px', fill: '#670002' })
+		var lolText = this.add.text(190, 70,"THOU ART DEAD", { fontFamily: 'Thou Art Dead', fontSize: '26px', fill: '#670002' }).setAlpha(0)
+        var anyKeyText = this.add.text(190, height - 40,"PRESS ANY KEY", { fontFamily: 'Thou Art Dead', fontSize: '26px', fill: '#670002' }).setAlpha(0)
+
+        // Slow down loading bar
+		this.load.image('background', 'images/tut/background.png')
+		for(var i = 0; i < 1000; i++) {
+			this.load.image('background_'+i, 'images/tut/background.png')
+		}
+
+		this.load.on('progress', this.updateBar, {newGraphics:this.newGraphics,loadingText:loadingText,lolText:lolText,anyKeyText:anyKeyText})
+
+        this.input.keyboard.on('keydown', () => {
+            if (this.load.progress == 1)
+                this.scene.start('menuScene')
+    })
+
         // Load Assets
 
         // Load Aseprite Sheets
@@ -41,6 +70,20 @@ class Load extends Phaser.Scene {
     }
 
     update() {
-        this.scene.start('menuScene')
+        // this.scene.start('menuScene')
     }
+
+    updateBar(percentage) {
+        this.newGraphics.clear();
+        this.newGraphics.fillStyle(0x500002, 1);
+        this.newGraphics.fillRectShape(new Phaser.Geom.Rectangle(202, 113, percentage*395, 45));
+        
+        if (percentage == 1) {
+            this.anyKeyText.setAlpha(1)
+        }
+        this.lolText.setAlpha(percentage)
+        percentage = percentage * 100;
+        this.loadingText.setText("INITIAL TESTS INDICATE");
+        console.log("P:" + percentage);
+        }
 }
