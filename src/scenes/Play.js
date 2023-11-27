@@ -75,9 +75,19 @@ create() {
     this.physics.add.collider(this.enemies, this.platformGroup)
     this.physics.add.collider(this.player, this.platformGroup)
     this.physics.add.collider(this.player, this.stairsGroup)
+    this.stairsCollider = this.physics.add.collider(this.player, this.stairsGroup)
+    this.stairsCollider.active = false
+
+    console.log(this.stairsCollider)
 
     this.physics.add.overlap(this.player, this.stairsGroup, () => {
-        console.log("overlapping")
+        console.log(this.stairsCollider)
+        console.log(this.player.isClimbing)
+        if (this.player.isClimbing) {
+            this.stairsCollider.active = true
+        } else {
+            this.stairsCollider.active = false
+        }
     })
 
     this.physics.add.collider(this.enemies, this.player.hitbox, (enemy) => {
