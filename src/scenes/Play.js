@@ -92,22 +92,19 @@ create() {
     bgm.play()
 
     // Text
-    let playerTextConfig = {
+    this.playerText = this.add.text(44, height - 40, 'PLAYER 1', {
         fontFamily: 'Thou Art Dead',
         fontSize: '26px',
         color: '#670002',
         align: 'right'
-    }
-
-    let scoreTextConfig = {
+    }).setScrollFactor(0)
+    
+    this.scoreText = this.add.text(width - 210, 20, '', {
         fontFamily: 'Thou Art Dead',
         fontSize: '29px',
         color: '#670002',
         align: 'right'
-    }
-
-    this.playerText = this.add.text(44, height - 40, 'PLAYER 1', playerTextConfig).setScrollFactor(0)
-    this.scoreText = this.add.text(width - 210, 20, '', scoreTextConfig).setScrollFactor(0)
+    }).setScrollFactor(0)
 }
 
 update() {
