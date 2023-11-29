@@ -4,6 +4,9 @@ class Menu extends Phaser.Scene {
     }
     
     preload() {
+        // Load Music
+        this.load.audio('menuBGM', './assets/music/HoliznaCC0 - Gamer 6969.mp3')
+
         this.sound.pauseOnBlur = false  // Prevent laugh sound from layering if the game is not in focus
     }
 

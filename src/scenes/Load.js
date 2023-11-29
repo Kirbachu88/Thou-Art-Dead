@@ -20,14 +20,17 @@ class Load extends Phaser.Scene {
 		var lolText = this.add.text(190, 70,"THOU ART DEAD", { fontFamily: 'Thou Art Dead', fontSize: '26px', fill: '#670002' }).setAlpha(0)
         var anyKeyText = this.add.text(190, height - 40,"PRESS ANY KEY", { fontFamily: 'Thou Art Dead', fontSize: '26px', fill: '#670002' }).setAlpha(0)
 
-		this.load.on('progress', this.updateBar, {newGraphics:this.newGraphics,loadingText:loadingText,lolText:lolText,anyKeyText:anyKeyText})
+        // Load Music
+        this.load.audio('playBGM', './assets/music/HoliznaCC0 - Dear Mr Super Computer.mp3')
 
-        this.input.keyboard.on('keydown', () => {
-            if (this.load.progress == 1)
-                this.scene.start('menuScene')
-    })
-
-        // Load Assets
+        // Load SFX
+        this.load.audio('enemyHit', 'assets/sounds/547042__eponn__hit-impact-sword-3.wav')
+        this.load.audio('swing', 'assets/sounds/568169__merrick079__sword-sound-2.wav')
+        this.load.audio('robot', './assets/sounds/Robot.wav')
+        this.load.audio('laugh', './assets/sounds/Laugh.wav')
+        this.load.audio('player_death', './assets/sounds/Player Death.wav')
+        this.load.audio('oh_yeah', './assets/sounds/Oh Yeah.wav')
+        this.load.audio('run_coward', './assets/sounds/Run Coward.wav')
 
         // Load Aseprite Sheets
         this.load.aseprite('menu', './assets/screens/Main Menu.png', './assets/screens/Main Menu.json')
@@ -40,18 +43,12 @@ class Load extends Phaser.Scene {
         this.load.image('tilesetImage', './assets/sprites/Tileset.png')
         this.load.tilemapTiledJSON('tilemapJSON', './assets/levels/Level 1.json')
 
-        // Load SFX
-        this.load.audio('enemyHit', 'assets/sounds/547042__eponn__hit-impact-sword-3.wav')
-        this.load.audio('swing', 'assets/sounds/568169__merrick079__sword-sound-2.wav')
-        this.load.audio('robot', './assets/sounds/Robot.wav')
-        this.load.audio('laugh', './assets/sounds/Laugh.wav')
-        this.load.audio('player_death', './assets/sounds/Player Death.wav')
-        this.load.audio('oh_yeah', './assets/sounds/Oh Yeah.wav')
-        this.load.audio('run_coward', './assets/sounds/Run Coward.wav')
+        this.load.on('progress', this.updateBar, {newGraphics:this.newGraphics,loadingText:loadingText,lolText:lolText,anyKeyText:anyKeyText})
 
-        // Load Music
-        this.load.audio('menuBGM', './assets/music/HoliznaCC0 - Gamer 6969.mp3')
-        this.load.audio('playBGM', './assets/music/HoliznaCC0 - Dear Mr Super Computer.mp3')
+        this.input.keyboard.on('keydown', () => {
+            if (this.load.progress == 1)
+                this.scene.start('menuScene')
+        })
     }
 
     create() {
@@ -66,7 +63,6 @@ class Load extends Phaser.Scene {
         this.newGraphics.clear();
         this.newGraphics.fillStyle(0x500002, 1);
         this.newGraphics.fillRectShape(new Phaser.Geom.Rectangle(202, 113, percentage*395, 45));
-        console.log(percentage)
         if (percentage == 1) {
             this.anyKeyText.setAlpha(1)
         }
