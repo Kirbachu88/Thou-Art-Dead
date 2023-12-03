@@ -2,7 +2,9 @@ class Golem extends Enemy {
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame)
 
-        this.body.setSize(20, 48).setOffset(16, 2)
+        this.body.setSize(16, 48).setOffset(18, 2)
+
+        this.velocity = 50
 
         // Initial Frame
         this.play({
@@ -12,17 +14,20 @@ class Golem extends Enemy {
     }
 
     update() {
-        if(!this.isAlive) {
+        if(this.isAlive) {
+            this.setVelocityX(this.velocity)
+        } else {
+            this.setVelocityX(0)
             this.setAlpha(this.alpha - 0.01)
         }
     }
 
     death() {
         if (this.isAlive) {
+            this.isAlive = false
             this.play('GolemDeath')
             this.sfxDeath.play()
             score += 25
         }
-        this.isAlive = false
     }
 }

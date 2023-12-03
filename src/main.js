@@ -15,6 +15,7 @@
 /* - body.blocked for tilemap colliders - https://phaser.discourse.group/t/arcade-physics-body-touching-down-not-true-when-using-tilemaps-and-colliders/12022
 /* - Add favicon                        - https://www.w3schools.com/html/html_favicon.asp
 /* - Loading Screen                     - https://www.patchesoft.com/phaser-3-loading-screen
+/* - Patrolling Enemy AI                - https://web.archive.org/web/20190715221905/http://blog.kumansenu.com/2016/04/patrolling-enemy-ai-with-phaser/
 /**********************************************************************************************/
 
 let config = {

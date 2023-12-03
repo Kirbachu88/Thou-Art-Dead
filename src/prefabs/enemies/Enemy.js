@@ -8,11 +8,12 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.setOrigin(0, 0)
 
         this.body.setCollideWorldBounds(true)
+        this.body.onWorldBounds = true
         this.setGravityY(1500)
 
         // Properties
         this.direction = 'right'
-        this.velocity = 200 // in pixels
+        this.velocity = 50 // in pixels
         this.isAlive = true
 
         // Add SFX
@@ -25,10 +26,10 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
 
     death() {
         if (this.isAlive) {
+            this.isAlive = false
             this.play(this.deathKey)
             this.sfxDeath.play()
             score += 25
         }
-        this.isAlive = false
     }
 }

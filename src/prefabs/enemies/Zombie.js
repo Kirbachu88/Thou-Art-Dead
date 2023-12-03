@@ -2,7 +2,9 @@ class Zombie extends Enemy {
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y, texture, frame)
 
-        this.body.setSize(32, 45).setOffset(14, 5)
+        this.body.setSize(24, 45).setOffset(14, 5)
+
+        this.velocity = 60
 
         // Initial Frame
         this.play({
@@ -12,8 +14,11 @@ class Zombie extends Enemy {
     }
 
     update() {
-        if(!this.isAlive) {
-            this.setAlpha(this.alpha - 0.02)
+        if(this.isAlive) {
+            this.setVelocityX(this.velocity)
+        } else {
+            this.setVelocityX(0)
+            this.setAlpha(this.alpha - 0.01)
         }
     }
 
