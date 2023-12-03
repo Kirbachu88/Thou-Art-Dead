@@ -20,6 +20,7 @@ create() {
     // Objects
     const platformObjects = map.getObjectLayer('PlatformObjects')
     const stairsObjects = map.getObjectLayer('StairObjects')
+    const edgeObjects = map.getObjectLayer('EdgeObjects')
     const enemyObjects = map.getObjectLayer('SpawnEnemies')
 
     // Enemies
@@ -67,15 +68,26 @@ create() {
     // Stairs
     this.stairsGroup = this.add.group()
     stairsObjects.objects.forEach( (item) => {
-        let stairs = new Stairs(this, item.x * 4, item.y * 4 - 20, null, null, item.width * 4, item.height * 4)
+        let stairs = new Platform(this, item.x * 4, item.y * 4 - 20, null, null, item.width * 4, item.height * 4)
         this.stairsGroup.add(stairs)
     })
 
+    // Edges
+    this.edgeGroup = this.add.group()
+    edgeObjects.objects.forEach( (item) => {
+        let edge = new Edge(this, item.x * 4 + 16, item.y * 4, null, null, item.width * 4, item.height * 4)
+        this.edgeGroup.add(edge)
+    })
+
     // Collisions
-    this.physics.add.collider(this.enemies, this.platformGroup)
     this.physics.add.collider(this.player, this.platformGroup)
     this.physics.add.collider(this.player, this.stairsGroup)
-    this.stairsCollider = this.physics.add.collider(this.player, this.stairsGroup)
+    this.physics.add.collider(this.player, this.edgeGroup)
+
+    this.physics.add.collider(this.enemies, this.platformGroup)
+    this.physics.add.collider(this.enemies, this.edgeGroup, () => {
+        
+    })
 
     this.physics.add.collider(this.enemies, this.player.hitbox, (enemy) => {
         if(['7', '12'].includes(this.player.frame.name) && enemy.isAlive) {
