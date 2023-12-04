@@ -10,6 +10,8 @@ preload() {
 create() {
     this.physics.world.setBounds(0, 0, width, height, true, true, true, false)
 
+    // Background Structures
+
     // Tilemap Info
     const map = this.add.tilemap('tilemapJSON')
     const tileset = map.addTilesetImage('Tileset', 'tilesetImage')
@@ -139,6 +141,7 @@ update() {
         this.playerFSM.step()
 
         if (this.player.y > height) {
+            this.cameras.main.stopFollow()
             this.sound.stopAll()
             this.sfxDeath.play()
             this.gameOver = true
