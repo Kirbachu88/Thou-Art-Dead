@@ -21,7 +21,7 @@ class Load extends Phaser.Scene {
         var anyKeyText = this.add.text(190, height - 40,"PRESS ANY KEY", { fontFamily: 'Thou Art Dead', fontSize: '26px', fill: '#670002' }).setAlpha(0)
 
         // Load Music
-        this.load.audio('playBGM', './assets/music/HoliznaCC0 - Dear Mr Super Computer.mp3')
+        this.load.audio('playBGM', './assets/music/HoliznaCC0 - Dear Mr Super Computer.wav')
 
         // Load SFX
         this.load.audio('enemyHit', './assets/sounds/547042__eponn__hit-impact-sword-3.wav')
