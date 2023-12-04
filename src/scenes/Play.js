@@ -4,7 +4,12 @@ class Play extends Phaser.Scene {
     }
 
 preload() {
+    // Health Bar
+    this.healthGraphics = this.add.graphics()
+    var healthBarFill = new Phaser.Geom.Rectangle(30, 25, 320, 25)
 
+    this.healthGraphics.fillStyle(0x500002, 1)
+    this.healthGraphics.fillRectShape(healthBarFill)
 }
 
 create() {
@@ -50,6 +55,8 @@ create() {
     // Player
     const playerSpawn = this.map.findObject('SpawnPlayer', obj => obj.name === 'SpawnPlayer')
     this.player = new Player(this, playerSpawn.x * 4, playerSpawn.y * 4, 'player', 0, 'down').setScale(4)
+
+    this.updateHealthBar(110)
 
     // setup keyboard input
     this.keys = this.input.keyboard.createCursorKeys()
@@ -97,7 +104,8 @@ create() {
 
     // Player Damaged
     this.physics.add.overlap(this.enemies, this.player, (enemy) => {
-        if(!['7', '12'].includes(this.player.frame.name) && enemy.isAlive) {
+        if(!['7', '12'].includes(this.player.frame.name) && enemy.isAlive && !this.gameOver) {
+            this.updateHealthBar(this.player.health)
             this.player.hurt = true
         }
     })
@@ -173,4 +181,11 @@ update() {
         this.player.setAlpha(this.player.alpha - 0.05)
     }
 }
+
+updateHealthBar(health) {
+    this.healthGraphics.clear();
+    this.healthGraphics.fillStyle(0x500002, 1);
+    this.healthGraphics.fillRectShape(new Phaser.Geom.Rectangle(30, 25, ((health - 10) / 100)*320, 25)).setScrollFactor(0)
+}
+
 }
