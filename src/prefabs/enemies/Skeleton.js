@@ -11,6 +11,9 @@ class Skeleton extends Enemy {
             key: 'SkeletonWalk',
             repeat: -1
         })
+
+        // Unique SFX
+        this.sfxDeath = scene.sound.add('skeletonHit', {volume: 0.2})
     }
 
     update() {
