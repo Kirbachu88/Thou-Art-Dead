@@ -13,19 +13,19 @@ create() {
     // Background Structures
 
     // Tilemap Info
-    const map = this.add.tilemap('tilemapJSON')
-    const tileset = map.addTilesetImage('Tileset', 'tilesetImage')
+    this.map = this.add.tilemap('tilemapJSON')
+    const tileset = this.map.addTilesetImage('Tileset', 'tilesetImage')
 
-    const bgLayer = map.createLayer('Decorative', tileset, 0, -20).setScale(4)
-    const mossLayer = map.createLayer('Moss', tileset, 0, -20).setScale(4)
-    const platformLayer = map.createLayer('Platforms', tileset, 0, -20).setScale(4)
-    const stairsLayer = map.createLayer('Stairs', tileset, 0, -20).setScale(4)
+    const bgLayer = this.map.createLayer('Decorative', tileset, 0, -20).setScale(4)
+    const mossLayer = this.map.createLayer('Moss', tileset, 0, -20).setScale(4)
+    const platformLayer = this.map.createLayer('Platforms', tileset, 0, -20).setScale(4)
+    const stairsLayer = this.map.createLayer('Stairs', tileset, 0, -20).setScale(4)
 
     // Objects
-    const platformObjects = map.getObjectLayer('PlatformObjects')
-    const stairsObjects = map.getObjectLayer('StairObjects')
-    const edgeObjects = map.getObjectLayer('EdgeObjects')
-    const enemyObjects = map.getObjectLayer('SpawnEnemies')
+    const platformObjects = this.map.getObjectLayer('PlatformObjects')
+    const stairsObjects = this.map.getObjectLayer('StairObjects')
+    const edgeObjects = this.map.getObjectLayer('EdgeObjects')
+    const enemyObjects = this.map.getObjectLayer('SpawnEnemies')
 
     // Enemies
     this.enemies = this.add.group()
@@ -48,7 +48,7 @@ create() {
     })
 
     // Player
-    const playerSpawn = map.findObject('SpawnPlayer', obj => obj.name === 'SpawnPlayer')
+    const playerSpawn = this.map.findObject('SpawnPlayer', obj => obj.name === 'SpawnPlayer')
     this.player = new Player(this, playerSpawn.x * 4, playerSpawn.y * 4, 'player', 0, 'down').setScale(4)
 
     // setup keyboard input
@@ -57,10 +57,10 @@ create() {
     this.keys.FKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F)
 
     // Camera
-    this.cameras.main.setBounds(0, 0, map.widthInPixels * 4, height)
+    this.cameras.main.setBounds(0, 0, this.map.widthInPixels * 4, height)
     this.cameras.main.startFollow(this.player, false, 1, 1, -(width / 7))
 
-    this.physics.world.setBounds(0, 0, map.widthInPixels * 4, height)
+    this.physics.world.setBounds(0, 0, this.map.widthInPixels * 4, height)
 
     // Platform
     this.platformGroup = this.add.group()
@@ -114,6 +114,8 @@ create() {
         volume: 1
     })
 
+    this.sfxLoop = this.sound.add('oh_yeah')
+
     // Text
     this.playerText = this.add.text(44, height - 40, 'PLAYER 1', {
         fontFamily: 'Thou Art Dead',
@@ -139,6 +141,13 @@ update() {
     if (!this.gameOver) {
         // make sure we step (ie update) the player's state machine
         this.playerFSM.step()
+
+        if (this.player.x > ((this.map.widthInPixels * 4) - 200)) {
+            this.sound.stopAll()
+            this.sfxLoop.play()
+            this.scene.restart()
+            console.log(this.player.health)
+        }
 
         if (this.player.y > height) {
             this.cameras.main.stopFollow()
