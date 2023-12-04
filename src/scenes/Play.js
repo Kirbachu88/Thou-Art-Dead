@@ -31,8 +31,7 @@ create() {
 
     enemyObjects.objects.forEach( (item) => {
         let enemy
-        // let enemyType = Phaser.Math.RND.integerInRange(0, 2)
-        let enemyType = 1
+        let enemyType = Phaser.Math.RND.integerInRange(0, 2)
         let enemyX = item.x * 4 - 16
         let enemyY = item.y * 3
 
