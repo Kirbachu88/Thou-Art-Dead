@@ -16,6 +16,7 @@
 /* - Add favicon                        - https://www.w3schools.com/html/html_favicon.asp
 /* - Loading Screen                     - https://www.patchesoft.com/phaser-3-loading-screen
 /* - Patrolling Enemy AI                - https://web.archive.org/web/20190715221905/http://blog.kumansenu.com/2016/04/patrolling-enemy-ai-with-phaser/
+/* - setBounds()                        - https://stackoverflow.com/questions/72461245/how-to-make-player-restrict-of-boundries-only-left-right-not-up-and-down-in-phas
 /**********************************************************************************************/
 
 let config = {

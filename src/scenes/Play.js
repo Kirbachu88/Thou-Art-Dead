@@ -8,6 +8,8 @@ preload() {
 }
 
 create() {
+    this.physics.world.setBounds(0, 0, width, height, true, true, true, false)
+
     // Tilemap Info
     const map = this.add.tilemap('tilemapJSON')
     const tileset = map.addTilesetImage('Tileset', 'tilesetImage')
@@ -106,6 +108,11 @@ create() {
     })
     bgm.play()
 
+    this.sfxDeath = this.sound.add('player_death', {
+        // Attack
+        volume: 1
+    })
+
     // Text
     this.playerText = this.add.text(44, height - 40, 'PLAYER 1', {
         fontFamily: 'Thou Art Dead',
@@ -120,12 +127,29 @@ create() {
         color: '#670002',
         align: 'right'
     }).setScrollFactor(0)
+
+    // Game Over flag
+    this.gameOver = false
 }
 
 update() {
     this.scoreText.text = String(score = Phaser.Math.Clamp(score, 0, 99999)).padStart(5, '0')
 
-    // make sure we step (ie update) the hero's state machine
-    this.playerFSM.step()
+    if (!this.gameOver) {
+        // make sure we step (ie update) the player's state machine
+        this.playerFSM.step()
+
+        if (this.player.y > height) {
+            this.sound.stopAll()
+            this.sfxDeath.play()
+            this.gameOver = true
+
+            this.timedEvent = this.time.delayedCall(2000, () => {
+                this.scene.start('menuScene')
+            })
+        }
+    } else {
+
+    }
 }
 }

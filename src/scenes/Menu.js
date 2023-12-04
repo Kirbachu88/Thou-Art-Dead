@@ -66,6 +66,9 @@ class Menu extends Phaser.Scene {
         }
 
         this.playerText = this.add.text(44, height - 40, 'PLAYER 1 - INSERT COIN', playerTextConfig)
+
+        // Score
+        score = 0
     }
 
     update() {

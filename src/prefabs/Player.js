@@ -16,6 +16,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Properties
         this.direction = 'right'
+        this.health = 100
         this.playerVelocity = 200 // in pixels
         this.lungeForceX = 500
         this.lungeForceY = 300
@@ -175,7 +176,7 @@ class MoveState extends State {
 
 class AttackState extends State {
     enter(scene, player) {
-        player.setVelocity(0)
+        player.setVelocityX(0)
         player.sfxSwing.play()
         player.anims.play('Attack')
         player.once('animationcomplete', () => {
