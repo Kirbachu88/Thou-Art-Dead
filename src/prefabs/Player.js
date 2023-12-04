@@ -88,7 +88,7 @@ class IdleState extends State {
             return
         }
 
-        // hurt if H key input (just for demo purposes)
+        // Player damaged
         if(player.hurt) {
             this.stateMachine.transition('hurt')
             return
@@ -136,7 +136,7 @@ class MoveState extends State {
             return
         }
 
-        // hurt if H key input (just for demo purposes)
+        // Player damaged
         if(player.hurt) {
             this.stateMachine.transition('hurt')
             return
@@ -214,6 +214,12 @@ class DuckState extends State {
         if(!scene.keys.down.isDown) {
             this.stateMachine.transition('idle')
         }
+
+        // Player damaged
+        if(player.hurt) {
+            this.stateMachine.transition('hurt')
+            return
+        }
     }
 }
 
@@ -225,8 +231,34 @@ class JumpState extends State {
     }
 
     execute(scene, player) {
+        const { left, right, up, down, space, shift } = scene.keys
+        
         if(player.body.blocked.down) {
             this.stateMachine.transition('idle')
+        }
+
+        // Player damaged
+        if(player.hurt) {
+            this.stateMachine.transition('hurt')
+            return
+        }
+
+        // handle movement
+        let moveDirection = new Phaser.Math.Vector2(0, 0)
+        if(left.isDown) {
+            player.setFlipX(true)
+            moveDirection.x = -1
+            player.direction = 'left'
+        } else if(right.isDown) {
+            player.setFlipX(false)
+            moveDirection.x = 1
+            player.direction = 'right'
+        }
+        // normalize movement vector, update player position, and play proper animation
+        moveDirection.normalize()
+        player.setVelocityX(player.playerVelocity * moveDirection.x)
+        if (player.body.blocked.down) {
+            player.anims.play('Walk', true)
         }
     }
 }
