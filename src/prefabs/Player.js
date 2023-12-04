@@ -17,6 +17,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         // Properties
         this.direction = 'right'
         this.health = 100
+        this.hurt = false
         this.playerVelocity = 200 // in pixels
         this.lungeForceX = 500
         this.lungeForceY = 300
@@ -62,7 +63,6 @@ class IdleState extends State {
 
         // use destructuring to make a local copy of the keyboard object
         const { left, right, up, down, space, shift } = scene.keys
-        const HKey = scene.keys.HKey
         const FKey = scene.keys.FKey
 
         if(player.body.onFloor) {
@@ -89,7 +89,7 @@ class IdleState extends State {
         }
 
         // hurt if H key input (just for demo purposes)
-        if(Phaser.Input.Keyboard.JustDown(HKey)) {
+        if(player.hurt) {
             this.stateMachine.transition('hurt')
             return
         }
@@ -111,7 +111,6 @@ class MoveState extends State {
     execute(scene, player) {
         // use destructuring to make a local copy of the keyboard object
         const { left, right, up, down, space, shift } = scene.keys
-        const HKey = scene.keys.HKey
         const FKey = scene.keys.FKey
 
         if(player.body.onFloor) {
@@ -138,7 +137,7 @@ class MoveState extends State {
         }
 
         // hurt if H key input (just for demo purposes)
-        if(Phaser.Input.Keyboard.JustDown(HKey)) {
+        if(player.hurt) {
             this.stateMachine.transition('hurt')
             return
         }
@@ -238,20 +237,24 @@ class HurtState extends State {
         player.anims.play('Hurt')
         player.anims.stop()
         player.setTint(0xFF0000)     // turn red
-        // create knockback by sending body in direction opposite source of damage
-        // switch(player.direction) {
-        //     case 'left':
-        //         player.setVelocityX(player.playerVelocity*2)
-        //         break
-        //     case 'right':
-        //         player.setVelocityX(-player.playerVelocity*2)
-        //         break
-        // }
+        // create knockback by sending body in direction opposite of player direction
+        switch(player.direction) {
+            case 'left':
+                player.setVelocityX(player.playerVelocity*2)
+                player.setVelocityY(-player.playerVelocity * 1.5)
+                break
+            case 'right':
+                player.setVelocityX(-player.playerVelocity*2)
+                player.setVelocityY(-player.playerVelocity * 1.5)
+                break
+        }
 
-        player.health -= 10
+        
 
         // set recovery timer
         scene.time.delayedCall(player.hurtTimer, () => {
+            player.hurt = false
+            player.health -= 10
             player.clearTint()
             this.stateMachine.transition('idle')
         })

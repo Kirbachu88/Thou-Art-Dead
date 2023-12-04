@@ -95,6 +95,14 @@ create() {
         }
     })
 
+    // Player Damaged
+    this.physics.add.overlap(this.enemies, this.player, (enemy) => {
+        if(!['7', '12'].includes(this.player.frame.name) && enemy.isAlive) {
+            this.player.hurt = true
+        }
+    })
+
+    // Attacks
     this.physics.add.overlap(this.enemies, this.player.hitbox, (enemy) => {
         if(['7', '12'].includes(this.player.frame.name) && enemy.isAlive) {
             enemy.death()
