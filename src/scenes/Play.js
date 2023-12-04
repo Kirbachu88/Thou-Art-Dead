@@ -149,7 +149,7 @@ update() {
             console.log(this.player.health)
         }
 
-        if (this.player.y > height) {
+        if (this.player.y > height || this.player.health <= 0) {
             this.cameras.main.stopFollow()
             this.sound.stopAll()
             this.sfxDeath.play()
@@ -160,7 +160,7 @@ update() {
             })
         }
     } else {
-
+        this.player.setAlpha(this.player.alpha - 0.05)
     }
 }
 }
