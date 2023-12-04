@@ -4,12 +4,7 @@ class Play extends Phaser.Scene {
     }
 
 preload() {
-    // Health Bar
-    this.healthGraphics = this.add.graphics()
-    var healthBarFill = new Phaser.Geom.Rectangle(30, 25, 320, 25)
 
-    this.healthGraphics.fillStyle(0x500002, 1)
-    this.healthGraphics.fillRectShape(healthBarFill)
 }
 
 create() {
@@ -55,6 +50,13 @@ create() {
     // Player
     const playerSpawn = this.map.findObject('SpawnPlayer', obj => obj.name === 'SpawnPlayer')
     this.player = new Player(this, playerSpawn.x * 4, playerSpawn.y * 4, 'player', 0, 'down').setScale(4)
+
+    // Health Bar
+    this.healthGraphics = this.add.graphics()
+    var healthBarFill = new Phaser.Geom.Rectangle(30, 25, 320, 25)
+
+    this.healthGraphics.fillStyle(0x500002, 1)
+    this.healthGraphics.fillRectShape(healthBarFill)
 
     this.updateHealthBar(110)
 
