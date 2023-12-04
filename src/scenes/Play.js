@@ -124,7 +124,7 @@ create() {
 
     this.sfxLoop = this.sound.add('oh_yeah')
 
-    // Text
+    // Text & UI
     this.playerText = this.add.text(44, height - 40, 'PLAYER 1', {
         fontFamily: 'Thou Art Dead',
         fontSize: '26px',
@@ -138,6 +138,8 @@ create() {
         color: '#670002',
         align: 'right'
     }).setScrollFactor(0)
+
+    this.healthbar = this.add.image(30, 25, 'healthBar').setOrigin(0, 0).setScale(4).setScrollFactor(0)
 
     // Game Over flag
     this.gameOver = false

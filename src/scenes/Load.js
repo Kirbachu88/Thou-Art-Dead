@@ -50,6 +50,9 @@ class Load extends Phaser.Scene {
             if (this.load.progress == 1)
                 this.scene.start('menuScene')
         })
+
+        // Load Images
+        this.load.image('healthBar', './assets/sprites/HealthBar.png')
     }
 
     create() {
