@@ -248,6 +248,8 @@ class HurtState extends State {
         //         break
         // }
 
+        player.health -= 10
+
         // set recovery timer
         scene.time.delayedCall(player.hurtTimer, () => {
             player.clearTint()
