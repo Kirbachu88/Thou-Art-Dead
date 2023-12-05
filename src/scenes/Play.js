@@ -16,10 +16,12 @@ create() {
     this.map = this.add.tilemap('tilemapJSON')
     const tileset = this.map.addTilesetImage('Tileset', 'tilesetImage')
 
-    const bgLayer = this.map.createLayer('Decorative', tileset, 0, -20).setScale(4)
+    const bgLayer = this.map.createLayer('Background', tileset, 0, -20).setScale(4)
+    const decorLayer = this.map.createLayer('Decorative', tileset, 0, -20).setScale(4)
     const mossLayer = this.map.createLayer('Moss', tileset, 0, -20).setScale(4)
     const platformLayer = this.map.createLayer('Platforms', tileset, 0, -20).setScale(4)
     const stairsLayer = this.map.createLayer('Stairs', tileset, 0, -20).setScale(4)
+    const fgLayer = this.map.createLayer('Foreground', tileset, 0, -20).setScale(4)
 
     // Objects
     const platformObjects = this.map.getObjectLayer('PlatformObjects')
