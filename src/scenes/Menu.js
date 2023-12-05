@@ -58,14 +58,15 @@ class Menu extends Phaser.Scene {
         }, this)
 
         // Text
-        let playerTextConfig = {
+        let menuTextConfig = {
             fontFamily: 'Thou Art Dead',
             fontSize: '26px',
             color: '#670002',
             align: 'right'
         }
 
-        this.playerText = this.add.text(44, height - 40, 'PLAYER 1 - INSERT COIN', playerTextConfig)
+        this.infoText = this.add.text(44, 20,            '(M)MANUAL - (C)CREDITS', menuTextConfig)
+        this.playerText = this.add.text(44, height - 40, 'PLAYER 1 - INSERT COIN', menuTextConfig)
 
         // Reset Values
         score = 0
