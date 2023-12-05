@@ -20,6 +20,7 @@ class Menu extends Phaser.Scene {
         })
 
         // Animation
+        this.transitioning = false
         
         // Create Animations
         this.anims.createFromAseprite('menu')
@@ -38,7 +39,8 @@ class Menu extends Phaser.Scene {
             bgm.play()
             this.timedEvent = this.time.addEvent({ delay: 1900, callback: this.laughEvent, callbackScope: this, loop: true })
 
-            this.input.keyboard.once('keydown', () => {
+            spaceBar.once('down', () => {
+                this.transitioning = true
                 this.timedEvent.paused = true
                 this.menu.stop()
                 this.sound.stopAll()
@@ -57,6 +59,10 @@ class Menu extends Phaser.Scene {
             this.menu.setFrame(1)
         }, this)
 
+        // Input
+        keys = this.input.keyboard.addKeys('C, M')
+        var spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE)
+
         // Text
         let menuTextConfig = {
             fontFamily: 'Thou Art Dead',
@@ -66,7 +72,7 @@ class Menu extends Phaser.Scene {
         }
 
         this.infoText = this.add.text(44, 20,            '(M)MANUAL - (C)CREDITS', menuTextConfig)
-        this.playerText = this.add.text(44, height - 40, 'PLAYER 1 - INSERT COIN', menuTextConfig)
+        this.playerText = this.add.text(44, height - 40, 'PLAYER 1 - PRESS SPACE', menuTextConfig)
 
         // Reset Values
         score = 0
@@ -74,7 +80,16 @@ class Menu extends Phaser.Scene {
     }
 
     update() {
-        
+        if (!this.transitioning) {
+            if (keys.C.isDown) {
+                this.sound.stopAll()
+                this.scene.start('creditsScene');
+            }
+            if (keys.M.isDown) {
+                this.sound.stopAll()
+                this.scene.start('manualScene');
+            }
+        }
     }
 
     laughEvent() {

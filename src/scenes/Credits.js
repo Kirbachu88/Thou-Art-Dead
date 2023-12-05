@@ -8,7 +8,11 @@ class Credits extends Phaser.Scene {
     }
 
     create() {
+        this.input.keyboard.on('keydown', () => {
+            this.scene.start('menuScene')
+        }, this)
 
+        console.log("Credits")
     }
 
     update() {
