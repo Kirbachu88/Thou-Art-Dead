@@ -1,7 +1,14 @@
 /**********************************************************************************************/
 /* Author: Angela Ku
 /* Title:  Thou Art Dead
-/* Time:   ?
+/* Time:   50h
+/*
+/* Components
+/* 1. Physics Systems
+/* 2. Cameras
+/* 3. Animation Manager
+/* 4. Timers
+/* 5. Tilemaps
 /*
 /* Citations
 /* - External CSS                       - https://www.w3schools.com/css/css_howto.asp
