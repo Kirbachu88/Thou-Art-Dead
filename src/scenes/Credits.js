@@ -4,7 +4,28 @@ class Credits extends Phaser.Scene {
     }
     
     preload() {
+        // Text
+        let menuTextConfig = {
+            fontFamily: 'Thou Art Dead',
+            fontSize: '26px',
+            color: '#670002',
+            align: 'right'
+        }
 
+        this.line1 = this.add.text(44, 20,  '  MADE BY ANGELA KU   ', menuTextConfig)
+        this.line1 = this.add.text(44, 60,  ' ART MADE IN ASEPRITE ', menuTextConfig)
+        this.line1 = this.add.text(44, 100, '    SOUND EFFECTS:    ', menuTextConfig)
+        this.line1 = this.add.text(44, 140, '      MERRICK079      ', menuTextConfig)
+        this.line1 = this.add.text(44, 180, '    SWORD SOUND 2 -CC0', menuTextConfig)
+        this.line1 = this.add.text(44, 220, '        EPONN         ', menuTextConfig)
+        this.line1 = this.add.text(44, 260, 'HIT IMPACT SWORD 3-CC0', menuTextConfig)
+        this.line1 = this.add.text(44, 300, ' MUSIC BY HOLIZNACC0: ', menuTextConfig)
+        this.line1 = this.add.text(44, 340, 'DEAR MR SUPER COMPUTER', menuTextConfig)
+        this.line1 = this.add.text(44, 380, '      GAMER 6969      ', menuTextConfig)
+        this.line1 = this.add.text(44, 420, ' ORIGINAL GAME SOURCE:', menuTextConfig)
+        this.line1 = this.add.text(44, 460, ' MONSTER HOUSE (FILM) ', menuTextConfig)
+        this.line1 = this.add.text(44, 500, '   COLUMBIA PICTURES  ', menuTextConfig)
+        this.line1 = this.add.text(44, 540, 'RETURN - PRESS ANY KEY', menuTextConfig)
     }
 
     create() {
