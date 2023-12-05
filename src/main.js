@@ -46,5 +46,6 @@ let { height, width } = game.config // Destructuring an object and assigning its
 let platforms
 
 let score = 0
+let startingHealth = 100
 
 let musicPlaying = false

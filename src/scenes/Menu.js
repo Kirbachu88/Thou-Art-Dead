@@ -67,8 +67,9 @@ class Menu extends Phaser.Scene {
 
         this.playerText = this.add.text(44, height - 40, 'PLAYER 1 - INSERT COIN', playerTextConfig)
 
-        // Score
+        // Reset Values
         score = 0
+        startingHealth = 100
     }
 
     update() {

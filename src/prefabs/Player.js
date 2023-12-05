@@ -16,7 +16,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         // Properties
         this.direction = 'right'
-        this.health = 100
+        this.health = startingHealth
         this.hurt = false
         this.playerVelocity = 200 // in pixels
         this.lungeForceX = 500

@@ -60,7 +60,7 @@ create() {
     this.healthGraphics.fillStyle(0x500002, 1)
     this.healthGraphics.fillRectShape(healthBarFill)
 
-    this.updateHealthBar(110)
+    this.updateHealthBar(startingHealth + 10)
 
     // setup keyboard input
     this.keys = this.input.keyboard.createCursorKeys()
@@ -165,10 +165,10 @@ update() {
         this.playerFSM.step()
 
         if (this.player.x > ((this.map.widthInPixels * 4) - 200)) {
+            startingHealth = this.player.health
             this.sound.stopAll()
             this.sfxLoop.play()
             this.scene.restart()
-            console.log(this.player.health)
         }
 
         if (this.player.y > height || this.player.health <= 0) {
