@@ -12,6 +12,7 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
         this.setGravityY(1500)
 
         // Properties
+        this.flipTimer = 0
         this.direction = 'right'
         this.velocity = 50 // in pixels
         this.isAlive = true
@@ -21,7 +22,15 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     }
 
     update() {
-        
+        this.flipTimer--
+    }
+
+    flip() {
+        if (this.flipTimer <= 0) {
+            this.velocity *= -1
+            this.toggleFlipX()
+            this.flipTimer = 50
+        }
     }
 
     death() {

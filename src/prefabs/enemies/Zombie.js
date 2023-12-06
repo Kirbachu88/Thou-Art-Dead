@@ -16,6 +16,7 @@ class Zombie extends Enemy {
     update() {
         if(this.isAlive) {
             this.setVelocityX(this.velocity)
+            this.flipTimer--
         } else {
             this.setVelocityX(0)
             this.setAlpha(this.alpha - 0.01)
