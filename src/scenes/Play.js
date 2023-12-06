@@ -99,7 +99,7 @@ create() {
     this.physics.add.collider(this.player, this.stairsGroup)
 
     this.physics.add.collider(this.enemies, this.platformGroup)
-    this.physics.add.collider(this.enemies, this.edgeGroup, (enemy, edge) => {
+    this.physics.add.overlap(this.enemies, this.edgeGroup, (enemy, edge) => {
         if (enemy.isAlive) {
             enemy.velocity *= -1
             enemy.toggleFlipX()
