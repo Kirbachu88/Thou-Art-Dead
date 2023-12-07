@@ -25,7 +25,7 @@ class Manual extends Phaser.Scene {
         this.line1 = this.add.text(44, 420, 'GROUND RAPIDLY AND FOR', menuTextConfig)
         this.line1 = this.add.text(44, 460, 'JUMPING OVER HUGE GAPS', menuTextConfig)
         this.line1 = this.add.text(44, 500, '                      ', menuTextConfig)
-        this.line1 = this.add.text(44, 540, 'RETURN - PRESS ANY KEY', menuTextConfig)
+        this.line1 = this.add.text(44, height - 40, 'RETURN - PRESS ANY KEY', menuTextConfig)
     }
 
     create() {

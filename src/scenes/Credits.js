@@ -25,7 +25,7 @@ class Credits extends Phaser.Scene {
         this.line1 = this.add.text(44, 420, ' ORIGINAL GAME SOURCE:', menuTextConfig)
         this.line1 = this.add.text(44, 460, ' MONSTER HOUSE (FILM) ', menuTextConfig)
         this.line1 = this.add.text(44, 500, '   COLUMBIA PICTURES  ', menuTextConfig)
-        this.line1 = this.add.text(44, 540, 'RETURN - PRESS ANY KEY', menuTextConfig)
+        this.line1 = this.add.text(44, height - 40, 'RETURN - PRESS ANY KEY', menuTextConfig)
     }
 
     create() {
