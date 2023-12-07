@@ -27,6 +27,7 @@ create() {
     const platformObjects = this.map.getObjectLayer('PlatformObjects')
     const stairsObjects = this.map.getObjectLayer('StairObjects')
     const edgeObjects = this.map.getObjectLayer('EdgeObjects')
+    const lavaObjects = this.map.getObjectLayer('LavaObjects')
     const enemyObjects = this.map.getObjectLayer('SpawnEnemies')
 
     // Enemies
@@ -47,6 +48,15 @@ create() {
             enemy = new Skeleton(this, enemyX, enemyY, 'skeleton', 0).setScale(4)
         }
         this.enemies.add(enemy)
+    })
+
+    // Lava (Behind Player)
+    lavaObjects.objects.forEach( (item) => {
+        let frame = 0
+        if (item.name === "Lava2") {
+            frame = 1
+        }
+        let lava = new Lava(this, item.x * 4, item.y * 4 - 22, 'lava', frame).setScale(4).setOrigin(0)
     })
 
     // Player

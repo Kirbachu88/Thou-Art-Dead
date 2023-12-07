@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="200" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="491">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="200" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="15" nextobjectid="516">
  <editorsettings>
   <export target="Level 1.json" format="json"/>
  </editorsettings>
@@ -760,6 +760,65 @@
   <object id="455" name="Edge" x="2224" y="144" width="16.1818" height="15.8182"/>
   <object id="456" name="Edge" x="1968" y="48" width="16.1818" height="15.8182"/>
   <object id="457" name="Edge" x="1744" y="48" width="16.1818" height="15.8182"/>
+ </objectgroup>
+ <objectgroup id="14" name="LavaObjects">
+  <object id="492" name="Lava" x="384" y="144">
+   <point/>
+  </object>
+  <object id="493" name="Lava" x="448" y="144">
+   <point/>
+  </object>
+  <object id="494" name="Lava" x="864" y="144">
+   <point/>
+  </object>
+  <object id="495" name="Lava2" x="880" y="144">
+   <point/>
+  </object>
+  <object id="496" name="Lava" x="896" y="144">
+   <point/>
+  </object>
+  <object id="498" name="Lava" x="928" y="144">
+   <point/>
+  </object>
+  <object id="500" name="Lava" x="1072" y="144">
+   <point/>
+  </object>
+  <object id="501" name="Lava" x="1136" y="144">
+   <point/>
+  </object>
+  <object id="503" name="Lava" x="1168" y="144">
+   <point/>
+  </object>
+  <object id="504" name="Lava" x="1264" y="144">
+   <point/>
+  </object>
+  <object id="505" name="Lava" x="1344" y="144">
+   <point/>
+  </object>
+  <object id="507" name="Lava" x="1376" y="144">
+   <point/>
+  </object>
+  <object id="508" name="Lava" x="1456" y="144">
+   <point/>
+  </object>
+  <object id="509" name="Lava" x="2208" y="144">
+   <point/>
+  </object>
+  <object id="511" name="Lava2" x="912" y="144">
+   <point/>
+  </object>
+  <object id="512" name="Lava2" x="944" y="144">
+   <point/>
+  </object>
+  <object id="513" name="Lava2" x="1152" y="144">
+   <point/>
+  </object>
+  <object id="514" name="Lava2" x="1360" y="144">
+   <point/>
+  </object>
+  <object id="515" name="Lava2" x="2224" y="144">
+   <point/>
+  </object>
  </objectgroup>
  <objectgroup id="6" name="SpawnPlayer">
   <object id="2" name="SpawnPlayer" x="0" y="96">

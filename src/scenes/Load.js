@@ -35,6 +35,7 @@ class Load extends Phaser.Scene {
 
         // Load Aseprite Sheets
         this.load.aseprite('menu', './assets/screens/Main Menu.png', './assets/screens/Main Menu.json')
+        this.load.aseprite('lava', './assets/sprites/Lava.png', './assets/sprites/Lava.json')
         this.load.aseprite('player', './assets/sprites/Player.png', './assets/sprites/Player.json')
         this.load.aseprite('golem', './assets/sprites/enemies/Golem.png', './assets/sprites/enemies/Golem.json')
         this.load.aseprite('zombie', './assets/sprites/enemies/Zombie.png', './assets/sprites/enemies/Zombie.json')

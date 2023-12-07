@@ -24,6 +24,7 @@ class Menu extends Phaser.Scene {
         
         // Create Animations
         this.anims.createFromAseprite('menu')
+        this.anims.createFromAseprite('lava')
         this.anims.createFromAseprite('player')
         this.anims.createFromAseprite('golem')
         this.anims.createFromAseprite('zombie')
